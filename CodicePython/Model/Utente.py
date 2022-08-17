@@ -3,7 +3,7 @@ class Utente:
         self.cellulare = cellulare
         self.codiceFiscale = codiceFiscale
         self.cognome = cognome
-        self.dataNascita= dataNascita
+        self.dataNascita = dataNascita
         self.email = email
         self.nome = nome
         self.password = password
