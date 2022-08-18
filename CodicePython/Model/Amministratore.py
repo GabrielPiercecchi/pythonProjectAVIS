@@ -2,11 +2,25 @@ import os
 import pickle
 import random
 
-from CodicePython import Controller
+from CodicePython.Controller import Accesso
+from CodicePython.Model.Tessera import Tessera
 
 
 class Amministratore:
 
+    conta_tessere = 1
+    elencoTessere = []
+
     def __init__(self, utente):
         self.utente = utente
         self.accesso = Accesso.Accesso()
+
+    def __iscrivi_donatore__(self):
+        pass  #al momento vuoto, da compilare in seguito
+
+
+    def __crea_tessera__(self, conta_tessere):
+        num = Tessera.__setCodice__(self, conta_tessere)
+        conta_tessere += 1
+        tessera = Tessera(codice=num, nome_donatore=nome, cognome_donatore=cognome, donazioni=[], numero_donazioni=0)
+        self.elencoTessere.append(tessera)

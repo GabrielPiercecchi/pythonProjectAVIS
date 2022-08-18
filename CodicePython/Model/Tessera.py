@@ -2,21 +2,19 @@ import datetime
 
 
 class Tessera:
-    contatore = 0
 
-    def __init__(self):
-        self.codice = 0
-        self.nome_donatore = ""
-        self.cognome_donatore = ""
-        self.donazioni = []  # elenco delle donazioni passate
-        self.numero_donazioni = 0
+    def __init__(self, codice: int, nome_donatore: "", cognome_donatore: "", donazioni: list, numero_donazioni):
+        self.codice = codice
+        self.nome_donatore = nome_donatore
+        self.cognome_donatore = cognome_donatore
+        self.donazioni = donazioni
+        self.numero_donazioni = numero_donazioni
 
     def __getCodice__(self):
         return self.codice
 
     def __setCodice__(self, contatore):
         self.codice = contatore
-        contatore += 1
 
     def __getNomeDonatore__(self):
         return self.nome_donatore
@@ -41,11 +39,16 @@ class Tessera:
 
     def __setDonazioni__(self, year, month, day, donazioni):
         data = datetime.datetime(year, month, day)
-        donazioni.append(data)
+        self.donazioni.append(data)
 
-    def __getInfoTessera__(self) -> str:
-        return super().__str__(self.__getCodice__(), self.__getNomeDonatore__(), self.__getCognomeDonatore__(),
-                               self.__getDonazioni(), self.__getNumeroDonazioni__())
+    def __getInfoTessera__(self):
+        return {
+            "codice: ": self.codice,
+            "nome: ": self.nome_donatore,
+            "cognome: ": self.cognome_donatore,
+            "elenco donazioni: ": self.donazioni,
+            "donazioni svolte: ": self.numero_donazioni
+        }
 
     def __setinfoTessera__(self, codice, nome, cognome, year, month, day, numero_donazioni):
         Tessera.__setCodice__(self, codice)
