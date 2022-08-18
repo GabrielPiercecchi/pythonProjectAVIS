@@ -34,14 +34,14 @@ class Tessera:
     def __getNumeroDonazioni__(self):
         return self.numero_donazioni
 
-    def __setNumeroDonazioni__(self):
+    def __setNumeroDonazioni__(self, numero_donazioni):
         numero_donazioni += 1
 
     def __getDonazioni(self):
         return self.donazioni
 
-    def __setDonazioni__(self, year, month, day):
-        data=datetime.datetime(year, month, day)
+    def __setDonazioni__(self, year, month, day, donazioni):
+        data= datetime.datetime(year, month, day)
         donazioni.append(data)
 
 
