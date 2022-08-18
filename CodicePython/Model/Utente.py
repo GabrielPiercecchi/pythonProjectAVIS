@@ -51,7 +51,7 @@ class Utente:
         self.password = password
 
     # Permette il ritorno in formato String di tutti gli Attributi (getinfoUtente)
-    def __str__(self) -> str:
+    def getinfoUtente(self) -> str:
         return super().__str__(self.getNome(), self.getCognome(), self.getCodice_fiscale(), self.getEmail(),
                                self.getCellulare(), self.getData_nascita(), self.getPassword())
 
