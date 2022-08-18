@@ -1,8 +1,6 @@
 import os
 import pickle
 import random
-
-from CodicePython.Controller import Accesso
 from CodicePython.Model.Tessera import Tessera
 
 
@@ -12,7 +10,6 @@ class Amministratore:
 
     def __init__(self, utente):
         self.utente = utente
-        self.accesso = Accesso.Accesso()
 
     def __iscrivi_donatore__(self):
         pass  # al momento vuoto, da compilare in seguito
