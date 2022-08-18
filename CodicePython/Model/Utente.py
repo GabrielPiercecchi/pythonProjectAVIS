@@ -55,9 +55,16 @@ class Utente:
         self.password = password
 
     # Permette il ritorno in formato String di tutti gli Attributi (getinfoUtente)
-    def getinfoUtente(self) -> str:
-        return super().__str__(self.getNome(), self.getCognome(), self.getCodice_fiscale(), self.getEmail(),
-                               self.getCellulare(), self.getData_nascita(), self.getPassword())
+    def getinfoUtente(self):
+        return {
+            "Nome": self.getNome(),
+            "Cognome": self.getCognome(),
+            "Codice Fiscale": self.getCodice_fiscale(),
+            "Email": self.getEmail(),
+            "Cellulare": self.getCellulare(),
+            "Data di nascita": self.getData_nascita(),
+            "Password": self.getPassword()
+        }
 
     # Permette l'aggiornamento di tutti gli attributi dell'oggetto Utente (setinfoUtente)
     def setinfoUtente(self, nome: "", cognome: "", codice_fiscale: "", email: "", cellulare: int,
