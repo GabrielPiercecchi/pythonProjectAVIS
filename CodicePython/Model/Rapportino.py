@@ -33,7 +33,7 @@ class Rapportino:
             "KM Percorsi: ": self.KM_fine - self.KM_inizio
         }
 
-    def __setInfoRapportino__(self, data:datetime.datetime, KM_inizio: int, KM_fine: int):
+    def __setInfoRapportino__(self, data: datetime.datetime, KM_inizio: int, KM_fine: int):
         Rapportino.__setDataServizio__(data)
         Rapportino.__setKMInizio__(self, KM_inizio)
         Rapportino.__setKMFine__(self, KM_fine)
