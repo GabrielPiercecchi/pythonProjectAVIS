@@ -1,18 +1,16 @@
-import os
-import pickle
-import random
-
-from CodicePython.Controller import Accesso
+import Utente
 from CodicePython.Model.Tessera import Tessera
+import datetime
 
 
-class Amministratore:
+class Amministratore(Utente):
     # conta_tessere = 1
     elencoTessere = []
 
-    def __init__(self, utente):
-        self.utente = utente
-        self.accesso = Accesso.Accesso()
+    def __init__(self, cellulare, codice_fiscale, cognome,
+                 data_nascita, email, nome, password):
+        Utente.Utente.__init__(self, cellulare, codice_fiscale, cognome,
+                               data_nascita, email, nome, password)
 
     def __iscrivi_donatore__(self):
         pass  # al momento vuoto, da compilare in seguito
