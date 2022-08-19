@@ -15,6 +15,7 @@ class Amministratore(Utente):
     conta_tessere = 1
     donatore = ""
     elenco_donatori = []
+    tessere = []
 
     def __init__(self, cellulare, codice_fiscale, cognome,
                  data_nascita, email, nome, password):
@@ -55,28 +56,33 @@ class Amministratore(Utente):
 
     def __crea_tessera__(self, conta_tessere, nome, cognome):
         tessera = Tessera(conta_tessere, nome, cognome, donazioni = [], numero_donazioni=0)
-        #continua dopo
-
         if os.path.isfile('Model/Tessere.pickle'):
             with open('Model/Tessere.pickle', 'rb') as f:  # lettura
                 tessere = pickle.load(f)
-        tessere[conta_tessere] = Tessera()
+        tessere.append(tessera)
         with open('Model/Tessere.pickle', 'wb') as f:
             pickle.dump(tessere, f, pickle.HIGHEST_PROTOCOL)
         conta_tessere += 1
 
-
-    def __ricercaTessera__(self, numero, elenco_tessere=elenco_tessere): #todo
-                for tessera in elenco_tessere:
+    def __ricercaTessera__(self, numero):
+        if os.path.isfile('Model/Tessere.pickle'):
+            with open('Model/Tessere.pickle', 'rb') as f:
+                tessere = dict(pickle.load(f))
+                for tessera in tessere.values():
                     if tessera.codice == numero:
                         return tessera
-                    else:
-                         return None
+                return None
+        else:
+            return None
 
-    def __eliminaTessera__(self, numero, elenco_tessere=elenco_tessere): #todo
-        for tessera in elenco_tessere:
-            if tessera.codice == numero:
-                del tessera
+    def __eliminaTessera__(self, numero):
+        if os.path.isfile('Model/Tessera.pickle'):
+            with open('Model/Tessera.pickle', 'wb+') as f:
+                tessere = dict(pickle.load(f))
+                for tessera in tessere.values():
+                    if tessera.codice == numero:
+                        tessere.pop(tessera)
+                pickle.dump(tessere, f, pickle.HIGHEST_PROTOCOL)
 
 
     def __visualizzaDisponibilita__(self):
