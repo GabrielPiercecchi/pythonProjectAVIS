@@ -31,6 +31,28 @@ class Amministratore(Utente):
         with open('Model/Donatori.pickle', 'wb') as f:
             pickle.dump(elenco_donatori, f, pickle.HIGHEST_PROTOCOL)
 
+    def __ricercaDonatore__(self, codice_fiscale):
+        if os.path.isfile('Model/Donatori.pickle'):
+            with open('Model/Donatori.pickle', 'rb') as f:
+                donatori = dict(pickle.load(f))
+                for donatore in donatori.values():
+                    if donatore.codice_fiscale == codice_fiscale:
+                        return donatore
+                return None
+        else:
+            return None
+
+    def __eliminaDonatore__(self):
+        if os.path.isfile('Model/Donatori.pickle'):
+            with open('Model/Donatori.pickle', 'wb+') as f:
+                donatori = pickle.load(f)
+                del donatori[self.codice]
+                pickle.dump(donatori, f, pickle.HIGHEST_PROTOCOL)
+        self.__eliminaUtente__()
+        self.gruppo_sanguigno = ""
+        self.idoneita = ""
+        del self
+
 
     def __crea_tessera__(self, conta_tessere, donatori=elenco_donatori):
         num = Tessera.__setCodice__(contatore=conta_tessere)
@@ -39,7 +61,17 @@ class Amministratore(Utente):
         tessera = Tessera(codice=num, nome_donatore=donatori.nome, cognome_donatore=donatori.cognome, donazioni=[], numero_donazioni=0)
         self.elenco_tessere.append(tessera)
 
+    def __ricercaTessera__(self, numero, elenco_tessere=elenco_tessere):
+                for tessera in elenco_tessere:
+                    if tessera.codice == numero:
+                        return tessera
+                    else:
+                         return None
 
+    def __eliminaTessera__(self, numero, elenco_tessere=elenco_tessere):
+        for tessera in elenco_tessere:
+            if tessera.codice == numero:
+                del tessera
 
 
     def __visualizzaDisponibilita__(self):
