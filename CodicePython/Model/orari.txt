@@ -1,1 +1,4 @@
-orario stato tesseradonatore
+anno mese giorno ora minuto stato tesseradonatore
+
+2022 08 19 10 15 true 0
+2022 08 19 10 30 false 34

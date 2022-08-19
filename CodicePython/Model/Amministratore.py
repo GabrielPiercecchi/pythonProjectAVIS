@@ -3,16 +3,18 @@ import pickle
 
 import Utente
 import fileinput
+
+from CodicePython.Model.Donazione import Donazione
 from CodicePython.Model.Tessera import Tessera
 from CodicePython.Model.Donatore import Donatore
 import datetime
 
 
 class Amministratore(Utente):
+
     conta_tessere = 1
-    elenco_tessere = []
-    elenco_donatori = []
     donatore = ""
+    elenco_donatori = []
 
     def __init__(self, cellulare, codice_fiscale, cognome,
                  data_nascita, email, nome, password):
@@ -20,14 +22,13 @@ class Amministratore(Utente):
                                data_nascita, email, nome, password)
 
     def __iscriviDonatore__(self, nome, cognome, codice_fiscale, data_nascita, cellulare, email, password,
-                            gruppo_sanguigno, idoneita, num_donatori=conta_tessere):
-        self.__iscriviUtente__()
-        self.gruppo_sanguigno = gruppo_sanguigno
-        self.idoneita = True
+                            gruppo_sanguigno):
+        donatore = Donatore(nome, cognome, codice_fiscale, data_nascita, cellulare, email, password,
+                            gruppo_sanguigno, idoneita= True)
         if os.path.isfile('Model/Donatori.pickle'):
             with open('Model/Donatori.pickle', 'rb') as f:  #lettura
                 elenco_donatori = pickle.load(f)
-        elenco_donatori[num_donatori] = self
+        elenco_donatori.append(donatore)
         with open('Model/Donatori.pickle', 'wb') as f:
             pickle.dump(elenco_donatori, f, pickle.HIGHEST_PROTOCOL)
 
@@ -42,47 +43,70 @@ class Amministratore(Utente):
         else:
             return None
 
-    def __eliminaDonatore__(self):
+    def __eliminaDonatore__(self, codice_fiscale):
         if os.path.isfile('Model/Donatori.pickle'):
             with open('Model/Donatori.pickle', 'wb+') as f:
-                donatori = pickle.load(f)
-                del donatori[self.codice]
+                donatori = dict(pickle.load(f))
+                for donatore in donatori.values():
+                    if donatore.codice_fiscale == codice_fiscale:
+                        donatori.pop(donatore)
                 pickle.dump(donatori, f, pickle.HIGHEST_PROTOCOL)
-        self.__eliminaUtente__()
-        self.gruppo_sanguigno = ""
-        self.idoneita = ""
-        del self
 
 
-    def __crea_tessera__(self, conta_tessere, donatori=elenco_donatori):
-        num = Tessera.__setCodice__(contatore=conta_tessere)
+    def __crea_tessera__(self, conta_tessere, nome, cognome):
+        tessera = Tessera(conta_tessere, nome, cognome, donazioni = [], numero_donazioni=0)
+        #continua dopo
+
+        if os.path.isfile('Model/Tessere.pickle'):
+            with open('Model/Tessere.pickle', 'rb') as f:  # lettura
+                tessere = pickle.load(f)
+        tessere[conta_tessere] = Tessera()
+        with open('Model/Tessere.pickle', 'wb') as f:
+            pickle.dump(tessere, f, pickle.HIGHEST_PROTOCOL)
         conta_tessere += 1
-        donatore = donatori.append()
-        tessera = Tessera(codice=num, nome_donatore=donatori.nome, cognome_donatore=donatori.cognome, donazioni=[], numero_donazioni=0)
-        self.elenco_tessere.append(tessera)
 
-    def __ricercaTessera__(self, numero, elenco_tessere=elenco_tessere):
+
+    def __ricercaTessera__(self, numero, elenco_tessere=elenco_tessere): #todo
                 for tessera in elenco_tessere:
                     if tessera.codice == numero:
                         return tessera
                     else:
                          return None
 
-    def __eliminaTessera__(self, numero, elenco_tessere=elenco_tessere):
+    def __eliminaTessera__(self, numero, elenco_tessere=elenco_tessere): #todo
         for tessera in elenco_tessere:
             if tessera.codice == numero:
                 del tessera
 
 
     def __visualizzaDisponibilita__(self):
+        orario = []
         with open('orari.txt', 'r') as fp:
             for line in fp:
-                print(line)
+                orario.append(line)
+        return orario
 
-    def __modificaStatoDonazione__(self):  #DA FARE!!!
-        replacements = {'Search1': 'Replace1', 'Search2': 'Replace2'}
-        for line in fileinput.input('orari.txt', inplace=True):
-            for search_for in replacements:
-                replace_with = replacements[search_for]
-        line = line.replace(search_for, replace_with)
-        print(line, end='')
+
+    def __modificaStatoDonazione__(self, anno: int, mese: int, giorno: int, ora: int, minuto: int, donatore: int):  #DA FARE!!!
+        donazioni = []
+        with open('orari.txt', 'r') as fp:
+            for line in fp: #problema
+                donazione = Donazione(year= , month= , day= , hour= , minute= , disponibile= )  #aggiungere attributo???
+                donazioni.append(donazione)
+            for donazione in donazioni:
+                if donazione.year == anno and donazione.month == mese and donazione.day == giorno and donazione.hour == ora and donazione.minute == minuto:
+                    if donatore == 0:
+                        Donazione.disponibile = True
+                        #modifica tessera donatore
+                    else:
+                        Donazione.disponibile = False
+                        #modifica tessera donatore
+        with open('orari.txt', 'w') as fp:
+            for donazione in donazioni:
+                fp.write(str(donazione.year) + ' ' + str(donazione.month) + ' ' + str(donazione.day) + ' ' + str(donazione.hour) + ' ' + str(donazione.minute) + ' ' + str(donazione.disponibile))
+
+
+
+
+
+

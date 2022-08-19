@@ -9,7 +9,6 @@ class Donazione:
         self.day = day
         self.hour = hour
         self.minute = minute
-        self.data_prenotazione = datetime.datetime(year=year, month=month, day=day, hour=hour, minute=minute)
         self.disponibile = disponibile
 
     def __getDisponibile__(self):
