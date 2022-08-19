@@ -3,20 +3,20 @@ import datetime
 
 class Donazione:
 
-    def __init__(self, year: int, month: int, day: int, hour: int, minute: int):
+    def __init__(self, year: int, month: int, day: int, hour: int, minute: int, disponibile: bool):
         self.year = year
         self.month = month
         self.day = day
         self.hour = hour
         self.minute = minute
         self.data_prenotazione = datetime.datetime(year=year, month=month, day=day, hour=hour, minute=minute)
-        self.idoneita = True
+        self.disponibile = disponibile
 
-    def __getIdoneita__(self):
-        return self.idoneita
+    def __getDisponibile__(self):
+        return self.disponibile
 
-    def __setIdoneita__(self, idoneita):
-        self.idoneita = idoneita
+    def __setDisponibile__(self, disponibile):
+        self.disponibile = disponibile
 
     def __getDataPrenotazione__(self):
         return self.data_prenotazione
