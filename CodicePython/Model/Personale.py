@@ -14,14 +14,16 @@ class Personale(Utente):
         self.orariolavorativo = orariolavorativo
         self.stato = stato
         self.turno = turno
-
+    
     def getinfoPersonale(self):
-        return {
+        info = self.getinfoUtente()
+        info += {
             "Idoneità 118": self.idoneita118,
             "Orario lavorativo": self.orariolavorativo,
             "Stato": self.stato,
             "Turno": self.turno
         }
+        return info
 
     def getIdoneita118(self):
         return self.idoneita118
@@ -35,8 +37,11 @@ class Personale(Utente):
     def getTurno(self):
         return self.turno
 
-    def setinfoPersonale(self, idoneita118: bool,
+    def setinfoPersonale(self, cellulare: int, codice_fiscale: "", cognome: "",
+                 data_nascita: datetime.date, email: "", nome: "", password: "", idoneita118: bool,
                  orariolavorativo: datetime.date, stato: bool, turno: datetime.date):
+        self.setinfoUtente(cellulare, codice_fiscale, cognome,
+                 data_nascita, email, nome, password)
         self.idoneita118 = idoneita118
         self.orariolavorativo = orariolavorativo
         self.turno = turno
