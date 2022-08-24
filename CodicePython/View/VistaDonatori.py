@@ -6,7 +6,8 @@ from Tools.scripts.make_ctype import values
 from CodicePython.Model.Donatore import Donatore
 from CodicePython.View.PyQt5.QtGui import QStandardItemModel, QStandardItem
 from CodicePython.View.PyQt5.QtWidgets import QVBoxLayout, QLabel, QSpacerItem, QSizePolicy, QHBoxLayout, QListView, \
-    QWidget
+    QWidget, QPushButton
+from CodicePython.View.VistaInserisciDonatore import VistaInserisciDonatore
 
 
 class VistaDonatori(QWidget):
