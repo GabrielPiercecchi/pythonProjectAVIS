@@ -17,6 +17,17 @@ class VistaDonatori(QWidget):
         self.update_donatori()
         h_layout.addWidget(self.list_view)
 
+        buttons_layout = QVBoxLayout()  #layout verticale
+        open_button = QPushButton('Apri')
+        open_button.clicked.connect(self.show_selected_info)
+        buttons_layout.addWidget(open_button)
+
+        new_button = QPushButton('Nuovo')
+        new_button.clicked.connect(self.show_new)
+        buttons_layout.addWidget(new_button)
+        buttons_layout.addStretch()
+        h_layout.addLayout(buttons_layout)
+
         self.setLayout(h_layout)
         self.resize(600, 300)
         self.setWindowTitle("Donatori")
@@ -41,3 +52,10 @@ class VistaDonatori(QWidget):
             item.setFont(font)
             listview_model.appendRow(item)
         self.list_view.setModel(listview_model)
+
+    def show_selected_info(self):
+        pass
+
+    def show_new(self):
+        self.iscrivi_donatore = VistaInserisciDonatore(callback=self.update_donatori)
+        self.iscrivi_donatore.show()
