@@ -105,7 +105,7 @@ class Amministratore(Utente):
                 hour = linea[11:12]
                 minute = linea[14:15]
                 disponibile = linea[17]
-                donazione = Donazione(year, month, day, hour, minute, disponibile)  #aggiungere attributo codice???
+                donazione = Donazione(int(year), int(month), int(day), int(hour), int(minute), bool(disponibile))  #aggiungere attributo codice???
                 donazioni.append(donazione)
             for donazione in donazioni:
                 if donazione.year == anno and donazione.month == mese and donazione.day == giorno and donazione.hour == ora and donazione.minute == minuto:
