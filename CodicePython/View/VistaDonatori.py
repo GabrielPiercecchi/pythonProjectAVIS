@@ -9,8 +9,8 @@ from CodicePython.View.PyQt5.QtWidgets import QVBoxLayout, QLabel, QSpacerItem, 
 
 
 class VistaDonatori:
-    def __init__(self, donatore, elimina_callback,):
-        super(VistaDonatori, self).__init__()
+    def __init__(self, parent=None):
+        super(VistaDonatori, self).__init__(parent)
         h_layout = QHBoxLayout()
         self.list_view = QListView()
         self.update_donatori()
