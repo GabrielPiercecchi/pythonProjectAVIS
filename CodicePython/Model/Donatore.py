@@ -21,7 +21,7 @@ class Donatore(Utente):
     def __getIdoneita__(self):
         return self.idoneita
 
-    def __setIdoneita__(self, gruppo_sanguigno):
+    def __setIdoneita__(self, idoneita):
         self.idoneita = idoneita
 
     def __visualizzaDisponibilita__(self):

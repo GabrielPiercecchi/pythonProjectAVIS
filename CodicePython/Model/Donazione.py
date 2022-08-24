@@ -20,5 +20,5 @@ class Donazione:
     def __getDataPrenotazione__(self):
         return self.data_prenotazione
 
-    def __setDataPrenotaione__(self, data_prenotazione, year: int, month: int, day: int, hour: int, minute: int):
+    def __setDataPrenotazione__(self, data_prenotazione, year: int, month: int, day: int, hour: int, minute: int):
         self.data_prenotazione = datetime.datetime(year, month, day, hour, minute)

@@ -96,22 +96,49 @@ class Amministratore(Utente):
     def __modificaStatoDonazione__(self, anno: int, mese: int, giorno: int, ora: int, minuto: int, donatore: int):  #DA FARE!!!
         donazioni = []
         with open('orari.txt', 'r') as fp:
-            for line in fp: #problema
-                donazione = Donazione(year= , month= , day= , hour= , minute= , disponibile= )  #aggiungere attributo???
+            for line in fp:
+                line = fp.readline()
+                linea = line[0:17]
+                year = linea[0:3]
+                month = linea[5:6]
+                day = linea[8:9]
+                hour = linea[11:12]
+                minute = linea[14:15]
+                disponibile = linea[17]
+                donazione = Donazione(year, month, day, hour, minute, disponibile)  #aggiungere attributo codice???
                 donazioni.append(donazione)
             for donazione in donazioni:
                 if donazione.year == anno and donazione.month == mese and donazione.day == giorno and donazione.hour == ora and donazione.minute == minuto:
                     if donatore == 0:
-                        Donazione.disponibile = True
+                        Donazione.disponibile = "L"
                         #modifica tessera donatore
                     else:
-                        Donazione.disponibile = False
+                        Donazione.disponibile = "O"
                         #modifica tessera donatore
         with open('orari.txt', 'w') as fp:
             for donazione in donazioni:
                 fp.write(str(donazione.year) + ' ' + str(donazione.month) + ' ' + str(donazione.day) + ' ' + str(donazione.hour) + ' ' + str(donazione.minute) + ' ' + str(donazione.disponibile))
 
+    def eliminaDipendente(self):
+        pass
 
+    def eliminaVolontario(self):
+        pass
+
+    def iscriviDipendente(self):
+        pass
+
+    def iscriviVolontario(self):
+        pass
+
+    def ricercaDipendente(self):
+        pass
+
+    def ricercaVolontario(self):
+        pass
+
+    def visualizzaRapportino(self):
+        pass
 
 
 
