@@ -1,3 +1,4 @@
+from CodicePython.View.VistaDonatori import VistaDonatori
 from PyQt5.QtWidgets import QWidget, QGridLayout, QPushButton, QSizePolicy
 
 
@@ -24,7 +25,8 @@ class VistaHome(QWidget):
         pass
 
     def go_donatori(self):
-        pass
+        self.vista_donatori = VistaDonatori()
+        self.vista_donatori.show()
 
     def go_personale(self):
         pass
