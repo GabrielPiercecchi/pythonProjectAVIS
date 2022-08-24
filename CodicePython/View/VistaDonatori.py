@@ -5,10 +5,11 @@ from Tools.scripts.make_ctype import values
 
 from CodicePython.Model.Donatore import Donatore
 from CodicePython.View.PyQt5.QtGui import QStandardItemModel, QStandardItem
-from CodicePython.View.PyQt5.QtWidgets import QVBoxLayout, QLabel, QSpacerItem, QSizePolicy, QHBoxLayout, QListView
+from CodicePython.View.PyQt5.QtWidgets import QVBoxLayout, QLabel, QSpacerItem, QSizePolicy, QHBoxLayout, QListView, \
+    QWidget
 
 
-class VistaDonatori:
+class VistaDonatori(QWidget):
     def __init__(self, parent=None):
         super(VistaDonatori, self).__init__(parent)
         h_layout = QHBoxLayout()
