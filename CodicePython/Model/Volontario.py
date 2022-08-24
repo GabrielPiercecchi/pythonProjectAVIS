@@ -19,22 +19,22 @@ class Volontario(Personale):
         }
         return info
 
-    def getOreAnnuali(self):
-        return self.oreAnnuali
+    def getOre_annuali(self):
+        return self.ore_annuali
 
-    def getOreSettimanali(self):
-        return self.oreSettimanali
+    def getOre_settimanali(self):
+        return self.ore_settimanali
 
     # correggere argomenti metodo su enterprise
-    def setinfoVolonario(self, cellulare, codice_fiscale, cognome, data_nascita, email, nome, password, idoneita118,
-                 orariolavorativo, stato, turno, oreAnnuali, oreSettimanali):
+    def setinfoVolonario(self, cellulare: int, codice_fiscale: "", cognome: "", data_nascita: datetime.date, email: "", nome: "", password: "", idoneita118: bool,
+                 orario_lavorativo: datetime.date, stato: bool, turno: datetime.date, ore_annuali: int, ore_settimanali: int):
         self.setinfoPersonale(cellulare, codice_fiscale, cognome, data_nascita, email, nome, password,
-                idoneita118, orariolavorativo, stato, turno)
-        self.oreAnnuali = oreAnnuali
-        self.oreSettimanali = oreSettimanali
+                idoneita118, orario_lavorativo, stato, turno)
+        self.ore_annuali = oreAnnuali
+        self.ore_settimanali = ore_settimanali
 
-    def setOreAnnuali(self, ore: int):
-        self.oreAnnuali = ore
+    def setOre_annuali(self, ore: int):
+        self.ore_annuali = ore
 
-    def setOreSettimanali(self, ore: int):
-        self.oreSettimanali = ore
+    def setOre_settimanali(self, ore: int):
+        self.ore_settimanali = ore
