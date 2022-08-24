@@ -4,10 +4,13 @@ import pickle
 import Utente
 import fileinput
 
+from CodicePython.Model.Dipendente import Dipendente
 from CodicePython.Model.Donazione import Donazione
 from CodicePython.Model.Tessera import Tessera
 from CodicePython.Model.Donatore import Donatore
 import datetime
+
+from CodicePython.Model.Volontario import Volontario
 
 
 class Amministratore(Utente):
@@ -125,11 +128,28 @@ class Amministratore(Utente):
     def eliminaVolontario(self):
         pass
 
-    def iscriviDipendente(self):
-        pass
+    def iscriviDipendente(self, nome, cognome, codice_fiscale, data_nascita, cellulare, email, password,
+         IBAN):
+        dipendente = Dipendente(nome, cognome, codice_fiscale, data_nascita, cellulare, email, password,
+                            IBAN)
+        if os.path.isfile('Model/Dipendenti.pickle'):
+            with open('Model/Dipendenti.pickle', 'rb') as f:  # lettura
+                elenco_dipendenti = pickle.load(f)
+        elenco_dipendenti.append(dipendente)
+        with open('Model/Dipendenti.pickle', 'wb') as f:
+            pickle.dump(elenco_dipendenti, f, pickle.HIGHEST_PROTOCOL)
 
-    def iscriviVolontario(self):
-        pass
+    def iscriviVolontario(self, nome, cognome, codice_fiscale, data_nascita, cellulare, email, password,
+         ore_annuali, ore_settimanali):
+        volontario = Volontario(nome, cognome, codice_fiscale, data_nascita, cellulare, email, password,
+         ore_annuali, ore_settimanali)
+        if os.path.isfile('Model/Volontari.pickle'):
+            with open('Model/Volontari.pickle', 'rb') as f:  # lettura
+                elenco_volontari = pickle.load(f)
+        elenco_volontari.append(volontario)
+        with open('Model/Dipendenti.pickle', 'wb') as f:
+            pickle.dump(elenco_volontari, f, pickle.HIGHEST_PROTOCOL)
+
 
     def ricercaDipendente(self):
         pass
