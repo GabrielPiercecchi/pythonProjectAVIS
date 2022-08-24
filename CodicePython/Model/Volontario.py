@@ -30,7 +30,7 @@ class Volontario(Personale):
                  orario_lavorativo: datetime.date, stato: bool, turno: datetime.date, ore_annuali: int, ore_settimanali: int):
         self.setinfoPersonale(cellulare, codice_fiscale, cognome, data_nascita, email, nome, password,
                 idoneita118, orario_lavorativo, stato, turno)
-        self.ore_annuali = oreAnnuali
+        self.ore_annuali = ore_annuali
         self.ore_settimanali = ore_settimanali
 
     def setOre_annuali(self, ore: int):

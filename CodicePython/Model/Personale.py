@@ -1,3 +1,5 @@
+import pickle
+
 from CodicePython.Model.Rapportino import Rapportino
 from CodicePython.Model.Utente import Utente
 import datetime
@@ -60,7 +62,12 @@ class Personale(Utente):
         self.turno = turno
         
     def __inserisciRapportino__(self, data, KM_inizio, KM_fine):
-        rapportino = Rapportino(data_servizio=data, KM_inizio=KM_inizio, KM_fine=KM_fine)
-        self.lista_rapportini.append(rapportino)
+        rapportino = Rapportino(data, KM_inizio, KM_fine)
+        if os.path.isfile('Model/Rapportini.pickle'):
+            with open('Model/Rapportini.pickle', 'rb') as f:  # lettura
+                rapportini = pickle.load(f)
+        rapportini.append(rapportino)
+        with open('Model/Rapportino.pickle', 'wb') as f:
+            pickle.dump(rappprtini, f, pickle.HIGHEST_PROTOCOL)
         return True
 
