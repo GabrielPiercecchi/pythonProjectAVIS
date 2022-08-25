@@ -52,3 +52,8 @@ class Donatore(Utente):
                             fp.write(str(donazione.year) + ' ' + str(donazione.month) + ' ' + str(donazione.day) + ' ' +
                                      str(donazione.hour) + ' ' + str(donazione.minute) + ' ' + str(
                                 donazione.disponibile))
+
+"""
+Commento
+"""
+
