@@ -1,7 +1,7 @@
 from datetime import datetime
 
-from CodicePython.Model.Donatore import Donatore
-from CodicePython.View.PyQt5.QtWidgets import QWidget, QVBoxLayout, QLabel, QLineEdit, QPushButton, QMessageBox
+from Model.Donatore import Donatore
+from PyQt5.QtWidgets import QWidget, QVBoxLayout, QLabel, QLineEdit, QPushButton, QMessageBox
 
 
 class VistaInserisciDonatore(QWidget):
@@ -61,5 +61,3 @@ class VistaInserisciDonatore(QWidget):
             return
         self.callback()
         self.close()
-
-
