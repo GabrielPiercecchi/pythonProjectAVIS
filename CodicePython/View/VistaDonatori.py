@@ -4,6 +4,8 @@ import pickle
 from Tools.scripts.make_ctype import values
 
 from Model.Donatore import Donatore
+
+from CodicePython.Model.Amministratore import Amministratore
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
 from PyQt5.QtWidgets import QVBoxLayout, QLabel, QSpacerItem, QSizePolicy, QHBoxLayout, QListView, \
     QWidget, QPushButton
@@ -55,7 +57,19 @@ class VistaDonatori(QWidget):
         self.list_view.setModel(listview_model)
 
     def show_selected_info(self):
-        pass
+        try:
+            selected = self.list_view.selectedIndexes()[0].data()
+            tipo = selected.split("-")[1].strip().split(" ")[0]
+            codice_fiscale = selected.split("-")[1].strip().split(" ")[1]
+            donatore = None
+            if tipo == "Donatore":
+                donatore = Amministratore().__ricercaDonatore__(donatore)
+            self.vista_donatore = VistaInserisciDonatore(donatore, elimina_callback = self.update_donatori)
+            self.vista_donatore.show()
+        except IndexError:
+            print("INDEX ERROR")
+            return
+        except TypeError:
 
     def show_new(self):
         self.iscrivi_donatore = VistaInserisciDonatore(callback=self.update_donatori)
