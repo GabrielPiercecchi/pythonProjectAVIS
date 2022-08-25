@@ -1,4 +1,4 @@
-from CodicePython.View.VistaDonatori import VistaDonatori
+from View.VistaDonatori import VistaDonatori
 from PyQt5.QtWidgets import QWidget, QGridLayout, QPushButton, QSizePolicy
 
 
