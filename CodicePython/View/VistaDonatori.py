@@ -3,11 +3,11 @@ import pickle
 
 from Tools.scripts.make_ctype import values
 
-from CodicePython.Model.Donatore import Donatore
-from CodicePython.View.PyQt5.QtGui import QStandardItemModel, QStandardItem
-from CodicePython.View.PyQt5.QtWidgets import QVBoxLayout, QLabel, QSpacerItem, QSizePolicy, QHBoxLayout, QListView, \
+from Model.Donatore import Donatore
+from PyQt5.QtGui import QStandardItemModel, QStandardItem
+from PyQt5.QtWidgets import QVBoxLayout, QLabel, QSpacerItem, QSizePolicy, QHBoxLayout, QListView, \
     QWidget, QPushButton
-from CodicePython.View.VistaInserisciDonatore import VistaInserisciDonatore
+from View.VistaInserisciDonatore import VistaInserisciDonatore
 
 
 class VistaDonatori(QWidget):
