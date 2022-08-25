@@ -69,7 +69,6 @@ class VistaDonatori(QWidget):
         except IndexError:
             print("INDEX ERROR")
             return
-        except TypeError:
 
     def show_new(self):
         self.iscrivi_donatore = VistaInserisciDonatore(callback=self.update_donatori)
