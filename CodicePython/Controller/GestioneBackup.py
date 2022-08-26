@@ -14,6 +14,7 @@ def take_backup(src_file_name,
                 dst_file_name=None,
                 src_dir='',
                 dst_dir=''):
+    global date_format
     try:
 
         # Extract the today's date
@@ -73,7 +74,8 @@ def take_backup(src_file_name,
 
 
 # Call the function
-take_backup("backup.txt")
+# take_backup("ciao.txt")
 
 if __name__ == '__main__':
-    take_backup("backup.txt")
+    take_backup("personale.txt")
+    take_backup("donatori.txt")
