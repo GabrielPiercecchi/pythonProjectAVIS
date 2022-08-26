@@ -54,6 +54,13 @@ class Donatore(Utente):
                                 donazione.disponibile))
 
 """
-Commento
+Metodo __visualizzaDisponibilità__ (alternativo che stampa solo il file orari.txt)
+--> Per questo motivo bisognerà creare un metodo che permetta di salvare una data e
+    e fare in modo che non possa essere scelta ancora.
+    
+    def __visualizzaDisponibilita__(self):
+            with open('orari.txt') as f:
+                lines = f.read()
+                print(lines)
 """
 
