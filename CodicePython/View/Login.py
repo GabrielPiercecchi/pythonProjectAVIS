@@ -1,5 +1,4 @@
 from CodicePython.View.VistaInserisciDonatore import VistaInserisciDonatore
-from CodicePython.View.VistaDonatori import VistaDonatori
 from PyQt5.QtWidgets import QLabel, QVBoxLayout, QLineEdit, QPushButton, QMessageBox
 
 
@@ -29,7 +28,7 @@ class Login:
         password = self.qLines["Password"].text()
         if admin == True:
             if username == "username" and password == "password":
-                self.iscrivi_donatore = VistaInserisciDonatore(callback=VistaDonatori.update_donatori)
+                self.iscrivi_donatore = VistaInserisciDonatore(callback=VistaInserisciDonatore.aggiungi_donatore)
                 self.iscrivi_donatore.show()
             else:
                 QMessageBox.critical(self, 'Errore', 'Controlla i dati inseriti', QMessageBox.Ok, QMessageBox.Ok)
