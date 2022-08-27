@@ -87,7 +87,7 @@ class Amministratore(Utente):
 
     def __visualizzaDisponibilita__(self):
         orario = []
-        with open('orari.txt', 'r') as fp:
+        with open('../orari.txt', 'r') as fp:
             for line in fp:
                 orario.append(line)
         return orario
@@ -95,7 +95,7 @@ class Amministratore(Utente):
 
     def __modificaStatoDonazione__(self, anno: int, mese: int, giorno: int, ora: int, minuto: int, donatore: int):  #DA FARE!!!
         donazioni = []
-        with open('orari.txt', 'r') as fp:
+        with open('../orari.txt', 'r') as fp:
             for line in fp:
                 line = fp.readline()
                 linea = line[0:17]
@@ -115,7 +115,7 @@ class Amministratore(Utente):
                     else:
                         Donazione.disponibile = "O"
                         #modifica tessera donatore
-        with open('orari.txt', 'w') as fp:
+        with open('../orari.txt', 'w') as fp:
             for donazione in donazioni:
                 fp.write(str(donazione.year) + ' ' + str(donazione.month) + ' ' + str(donazione.day) + ' ' + str(donazione.hour) + ' ' + str(donazione.minute) + ' ' + str(donazione.disponibile))
 

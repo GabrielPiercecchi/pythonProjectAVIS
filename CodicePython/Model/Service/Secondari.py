@@ -1,5 +1,5 @@
 from CodicePython.Model.Rapportino import Rapportino
-from CodicePython.Model.Emergenza import Emergenza
+from CodicePython.Model.Service.Emergenza import Emergenza
 
 
 class Secondari(Emergenza):

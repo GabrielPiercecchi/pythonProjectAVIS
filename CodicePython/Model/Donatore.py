@@ -40,14 +40,14 @@ class Donatore(Utente):
     def __visualizzaDisponibilita__(self):
         donazioni = []
         disponibili = []
-        with open('orari.txt', 'r') as fp:
+        with open('../orari.txt', 'r') as fp:
             for line in fp:  # problema
                 donazione = Donazione(year, month, day, hour, minute, disponibile)  # aggiungere attributo???
                 donazioni.append(donazione)
             for donazione in donazioni:
                 if donazione.disponibile == True:
                     disponibili.append(donazione)
-                    with open('disponibilita.txt', 'w') as fp:
+                    with open('../Controller/disponibilita.txt', 'w') as fp:
                         for donazione in donazioni:
                             fp.write(str(donazione.year) + ' ' + str(donazione.month) + ' ' + str(donazione.day) + ' ' +
                                      str(donazione.hour) + ' ' + str(donazione.minute) + ' ' + str(
@@ -55,12 +55,15 @@ class Donatore(Utente):
 
 """
 Metodo __visualizzaDisponibilità__ (alternativo che stampa solo il file orari.txt)
---> Per questo motivo bisognerà creare un metodo che permetta di salvare una data e
+--> Per questo motivo bisognerà creare un metodo che permetta di salvare una data
     e fare in modo che non possa essere scelta ancora.
     
     def __visualizzaDisponibilita__(self):
             with open('orari.txt') as f:
                 lines = f.read()
                 print(lines)
+                
+--> IMPORTANTE: QUESTO METODO SU ENTERPRISE CE L'HA SIA IL "DONATORE" CHE "GESTIONE PRENOTAZIONE"
+                DEVE ESSERE TENUTO SOLO SU "GESTIONE PRENOTAZIONE"
 """
 
