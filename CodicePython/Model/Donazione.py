@@ -1,15 +1,30 @@
 import datetime
 
+from CodicePython.Model.Donatore import Donatore
 
 class Donazione:
 
-    def __init__(self, year: int, month: int, day: int, hour: int, minute: int, disponibile: bool):
+    def __init__(self, donatore: Donatore, id_donazione: int, year: int, month: int, day: int, hour: int, minute: int, disponibile: bool):
+        self.donatore = donatore
+        self.id_donazione = id_donazione
         self.year = year
         self.month = month
         self.day = day
         self.hour = hour
         self.minute = minute
         self.disponibile = disponibile
+
+    def __getDonatore__(self):
+        return self.donatore
+
+    def __setDonatore__(self, donatore):
+        self.donatore = donatore
+
+    def __getID_donazione__(self):
+        return self.id_donazione
+
+    def __setID_donazione__(self, id_donazione):
+        self.id_donazione = id_donazione
 
     def __getDisponibile__(self):
         return self.disponibile
