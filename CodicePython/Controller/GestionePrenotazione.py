@@ -1,4 +1,3 @@
-import pickle
 import CodicePython.Model.Donatore
 
 allDatePrenotate = []
@@ -23,8 +22,28 @@ def __verificaIdoneita__(self, Id):
         return 0
 
 
+def __verificaPrenotazioneEsistente__(self, Id):
+    pass
+    # Non so come implementare una verifica senza avere un codice
+    # identificativo. AIUTO!!
+
+
 """
 Il metodo "__verificaDisponibilitaData__" NON SERVE (si deve togliere da "Enterprise"
+"""
+
+"""
+DEVE ESSERE IMPLEMENTATO IL METODO "__modificaPrenotazione__"
+--> Possibile metodo
+
+    def __modificaPrenotazione__(self, dataVecchia, dataNuova):
+        if not allDatePrenotate.__contains__(dataNuova):
+            if allDatePrenotate.__contains__(dataVecchia):
+                for index, value in enumerate(allDatePrenotate):
+                    if value == dataVecchia:
+                        allDatePrenotazione[index] = dataNuova
+                print("\nPrenotazione aggiornata:
+                        \nda: " + dataVecchia + "a: " + dataNuova)
 """
 
 """
