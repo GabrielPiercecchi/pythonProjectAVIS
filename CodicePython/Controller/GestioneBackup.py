@@ -28,7 +28,7 @@ def take_backup(src_file_name,
         # If user not enter any source file,
         # then just give the error message...
         if not src_file_name:
-            print("Please give atleast the Source File Name")
+            print("Please give at least the Source File Name")
             exit()
 
         try:
@@ -50,7 +50,7 @@ def take_backup(src_file_name,
                 dst_file_name = src_file_name
                 dst_dir = dst_dir + date_format + dst_file_name
 
-            # When user Enter an a
+            # When user Enter a
             # name for the backup copy
             else:
                 dst_dir = dst_dir + date_format + dst_file_name
