@@ -79,3 +79,4 @@ def take_backup(src_file_name,
 if __name__ == '__main__':
     take_backup("personale.txt")
     take_backup("donatori.txt")
+    take_backup("test.json")
