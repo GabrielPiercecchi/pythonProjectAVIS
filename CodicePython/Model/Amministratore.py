@@ -33,7 +33,7 @@ class Amministratore(Utente):
         with open('Model/Donatori.pickle', 'wb') as f:
             pickle.dump(elenco_donatori, f, pickle.HIGHEST_PROTOCOL)
 
-    def __ricercaDonatore__(self, codice_fiscale):
+    def ricercaDonatore(self, codice_fiscale):
         if os.path.isfile('Model/Donatori.pickle'):
             with open('Model/Donatori.pickle', 'rb') as f:
                 donatori = dict(pickle.load(f))

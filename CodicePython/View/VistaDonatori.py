@@ -3,13 +3,14 @@ import pickle
 
 from Tools.scripts.make_ctype import values
 
-from Model.Donatore import Donatore
+from CodicePython.Model.Donatore import Donatore
 
 from CodicePython.Model.Amministratore import Amministratore
+from CodicePython.View.Login import Login
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
 from PyQt5.QtWidgets import QVBoxLayout, QLabel, QSpacerItem, QSizePolicy, QHBoxLayout, QListView, \
     QWidget, QPushButton
-from View.VistaInserisciDonatore import VistaInserisciDonatore
+from VistaInserisciDonatore import VistaInserisciDonatore
 
 
 class VistaDonatori(QWidget):
@@ -57,13 +58,15 @@ class VistaDonatori(QWidget):
         self.list_view.setModel(listview_model)
 
     def show_selected_info(self):
+        amministratore = Amministratore(3473984100, "AMMINISTRATORESTUPIDO", "Paniccia",
+                 25/12/0000, "osvaldopaniccia@boh.sium", "Osvaldo", "password")
         try:
             selected = self.list_view.selectedIndexes()[0].data()
             tipo = selected.split("-")[1].strip().split(" ")[0]
             codice_fiscale = selected.split("-")[1].strip().split(" ")[1]
             donatore = None
             if tipo == "Donatore":
-                donatore = Amministratore().__ricercaDonatore__(donatore)
+                donatore = amministratore.ricercaDonatore(donatore)
             self.vista_donatore = VistaInserisciDonatore(donatore, elimina_callback = self.update_donatori)
             self.vista_donatore.show()
         except IndexError:
@@ -71,5 +74,4 @@ class VistaDonatori(QWidget):
             return
 
     def show_new(self):
-        self.iscrivi_donatore = VistaInserisciDonatore(callback=self.update_donatori)
-        self.iscrivi_donatore.show()
+        self.login = Login(callback=Login.loginNuovoDonatore)

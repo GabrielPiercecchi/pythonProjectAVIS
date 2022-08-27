@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from Model.Donatore import Donatore
+from CodicePython.Model.Donatore import Donatore
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QLabel, QLineEdit, QPushButton, QMessageBox
 
 
