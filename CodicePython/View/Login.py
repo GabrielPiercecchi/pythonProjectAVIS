@@ -17,7 +17,7 @@ class Login:
         self.qLines["btn_ok"] = btn_ok
         self.v_layout.addWidget(btn_ok)
 
-    def add_info_text(self, param, label):
+    def add_info_text(self, param, label): #problema 
         self.v_layout.addWidget(QLabel(label))
         current_text = QLineEdit(self)
         self.qLines[param] = current_text
