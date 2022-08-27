@@ -29,7 +29,7 @@ def __verificaPrenotazioneEsistente__(self, Id):
 
 
 """
-Il metodo "__verificaDisponibilitaData__" NON SERVE (si deve togliere da "Enterprise"
+Il metodo "__verificaDisponibilitaData__" NON SERVE (si deve togliere da "Enterprise")
 """
 
 """
