@@ -74,4 +74,4 @@ class VistaDonatori(QWidget):
             return
 
     def show_new(self):
-        self.login = Login(callback=Login.loginNuovoDonatore)
+        self.login = Login(callback=Login.loginNuovoDonatore)  #controllare
