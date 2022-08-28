@@ -1,12 +1,12 @@
 import os.path
 import pickle
 
-from Tools.scripts.make_ctype import values
+#from Tools.scripts.make_ctype import values  da vedere
 
 from CodicePython.Model.Donatore import Donatore
 
 from CodicePython.Model.Amministratore import Amministratore
-from CodicePython.View.Login import Login, LoginNuovoDonatore
+from CodicePython.View.LoginNuovoDonatore import LoginNuovoDonatore
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
 from PyQt5.QtWidgets import QVBoxLayout, QLabel, QSpacerItem, QSizePolicy, QHBoxLayout, QListView, \
     QWidget, QPushButton
