@@ -1,15 +1,14 @@
 import datetime
 
-from CodicePython.Model.Donatore import Donatore
-
 
 class Donazione:
 
-    def __init__(self, donatore: Donatore, id_donazione: int, tipo: bool, year: int, month: int, day: int, hour: int,
+    def __init__(self, codice_tessera: int, id_donazione: int, tipo: bool, year: int, month: int, day: int, hour: int,
                  minute: int, disponibile: bool):
-        self.donatore = donatore
+        #   attributo di tipo bool che specifica il codice di tessera del donatore
+        self.codice_tessera = codice_tessera
         self.id_donazione = id_donazione
-    #   attributo di tipo bool che specifica se su tratta di una donazione di sangue o plasma
+        #   attributo di tipo bool che specifica se su tratta di una donazione di sangue o plasma
         self.tipo = tipo
         self.year = year
         self.month = month
@@ -18,11 +17,11 @@ class Donazione:
         self.minute = minute
         self.disponibile = disponibile
 
-    def __getCodice_fiscale_donatore__(self):
-        return self.donatore.codice_fiscale
+    def __getCodice_tessera__(self):
+        return self.codice_tessera
 
-    def __setCodice_fiscale_donatore__(self, donatore):
-        self.donatore.codice_fiscale = donatore.codice_fiscale
+    def __setCodice_tessera__(self, codice_tessera):
+        self.codice_tessera = codice_tessera
 
     def __getID_donazione__(self):
         return self.id_donazione

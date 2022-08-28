@@ -1,5 +1,6 @@
 import datetime
 
+from CodicePython.Model import Tessera
 from CodicePython.Model.Donazione import Donazione
 from CodicePython.Model.Utente import Utente
 
@@ -7,8 +8,9 @@ from CodicePython.Model.Utente import Utente
 class Donatore(Utente):
 
     def __init__(self, cellulare: int, codice_fiscale: "", cognome: "", data_nascita: datetime.date,
-                 email: "", nome: "", password: "", gruppo_sanguigno: "", idoneita: bool):
+                 email: "", nome: "", password: "", tessera: Tessera, gruppo_sanguigno: "", idoneita: bool):
         Utente.__init__(self, cellulare, codice_fiscale, cognome, data_nascita, email, nome, password)
+        self.tessera = tessera
         self.gruppo_sanguigno = gruppo_sanguigno
         self.idoneita = idoneita
 
