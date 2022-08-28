@@ -6,7 +6,7 @@ from Tools.scripts.make_ctype import values
 from CodicePython.Model.Donatore import Donatore
 
 from CodicePython.Model.Amministratore import Amministratore
-from CodicePython.View.Login import Login
+from CodicePython.View.Login import Login, LoginNuovoDonatore
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
 from PyQt5.QtWidgets import QVBoxLayout, QLabel, QSpacerItem, QSizePolicy, QHBoxLayout, QListView, \
     QWidget, QPushButton
@@ -15,6 +15,7 @@ from VistaInserisciDonatore import VistaInserisciDonatore
 
 class VistaDonatori(QWidget):
     def __init__(self, parent=None):
+        self.windowTemp = QWidget
         super(VistaDonatori, self).__init__(parent)
         h_layout = QHBoxLayout()
         self.list_view = QListView()
@@ -74,4 +75,5 @@ class VistaDonatori(QWidget):
             return
 
     def show_new(self):
-        self.login = Login(callback=Login.loginNuovoDonatore)  #controllare
+        self.login = Login(callback=LoginNuovoDonatore.log)  #controllare
+        self.login.show()
