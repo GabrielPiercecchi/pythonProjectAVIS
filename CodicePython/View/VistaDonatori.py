@@ -10,7 +10,7 @@ from CodicePython.View.LoginNuovoDonatore import LoginNuovoDonatore
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
 from PyQt5.QtWidgets import QVBoxLayout, QLabel, QSpacerItem, QSizePolicy, QHBoxLayout, QListView, \
     QWidget, QPushButton
-from VistaInserisciDonatore import VistaInserisciDonatore
+from CodicePython.View.VistaInserisciDonatore import VistaInserisciDonatore
 
 
 class VistaDonatori(QWidget):
