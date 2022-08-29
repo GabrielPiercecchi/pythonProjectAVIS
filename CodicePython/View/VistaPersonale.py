@@ -5,7 +5,7 @@ class VistaPersonale(QWidget):
     def __init__(self, parent=None):
         super(VistaPersonale, self).__init__(parent)
         grid_layout = QGridLayout()
-        grid_layout.addWidget(self.get_generic_button("Volontario", self.go_volontario), 0, 0)
+        grid_layout.addWidget(self.get_generic_button("Volontario", self.go_volontario), 1, 0)
         grid_layout.addWidget(self.get_generic_button("Dipendente", self.go_dipendente), 1, 1)
         self.setLayout(grid_layout)
         self.resize(400, 300)
