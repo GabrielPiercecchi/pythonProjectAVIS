@@ -1,7 +1,7 @@
 import os.path
 import pickle
 
-import Utente
+from CodicePython.Model.Utente import Utente
 import fileinput
 
 from CodicePython.Model.Dipendente import Dipendente
