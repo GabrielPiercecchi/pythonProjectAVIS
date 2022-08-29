@@ -34,6 +34,6 @@ class Rapportino:
         }
 
     def __setInfoRapportino__(self, data: datetime.datetime, KM_inizio: int, KM_fine: int):
-        Rapportino.__setDataServizio__(data)
+        Rapportino.__setDataServizio__(self, data)
         Rapportino.__setKMInizio__(self, KM_inizio)
         Rapportino.__setKMFine__(self, KM_fine)
