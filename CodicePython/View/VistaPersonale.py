@@ -9,7 +9,7 @@ class VistaPersonale(QWidget):
         grid_layout.addWidget(self.get_generic_button("Dipendente", self.go_dipendente), 1, 1)
         self.setLayout(grid_layout)
         self.resize(400, 300)
-        self.setWindowTitle("AVIS")
+        self.setWindowTitle("Personale")
 
     def get_generic_button(self, titolo, on_click):
         button = QPushButton(titolo)
