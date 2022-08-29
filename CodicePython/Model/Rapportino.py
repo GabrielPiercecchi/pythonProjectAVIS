@@ -2,7 +2,7 @@ import datetime
 
 
 class Rapportino:
-    def __init__(self, data_servizio: datetime.datetime(), KM_fine: int, KM_inizio: int):
+    def __init__(self, data_servizio: datetime.datetime, KM_fine: int, KM_inizio: int):
         self.data_servizio = data_servizio
         self.KM_fine = KM_fine
         self.KM_inizio = KM_inizio
@@ -10,7 +10,7 @@ class Rapportino:
     def __getDataServizio__(self):
         return self.data_servizio
 
-    def __setDataServizio__(self, data: datetime.datetime()):
+    def __setDataServizio__(self, data: datetime.datetime):
         self.data_servizio = data
 
     def __getKMFine__(self):
