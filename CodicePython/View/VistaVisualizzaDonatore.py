@@ -1,6 +1,6 @@
 from CodicePython.Model.Donatore import Donatore
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QLabel, QSpacerItem, QSizePolicy, QPushButton
-
+from CodicePython.Model.Amministratore import Amministratore
 
 class VistaVisualizzaDonatore(QWidget):
     def __init__(self, donatore, elimina_callback): #gestione visualizza ed elimina donatore
@@ -41,7 +41,7 @@ class VistaVisualizzaDonatore(QWidget):
 
     def elimina_donatore_click(self, donatore):
         if isinstance(donatore, Donatore):
-            amministratore.__eliminaDonatore__() #AIUTO
+            Amministratore.__eliminaDonatore__()
         self.elimina_callback()
         self.close()
 
