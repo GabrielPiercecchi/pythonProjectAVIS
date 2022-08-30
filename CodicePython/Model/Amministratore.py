@@ -18,11 +18,11 @@ class Amministratore(Utente):
     conta_tessere = 1
 
     def __init__(self, cellulare, codice_fiscale, cognome,
-                 data_nascita, email, nome, password):
-        Utente.Utente.__init__(self, cellulare, codice_fiscale, cognome,
+                 data_nascita: datetime.date, email, nome, password):
+        Utente.__init__(self, cellulare, codice_fiscale, cognome,
                                data_nascita, email, nome, password)
 
-    def __iscriviDonatore__(self, nome, cognome, codice_fiscale, data_nascita: datetime, cellulare, email, password,
+    def __iscriviDonatore__(self, nome, cognome, codice_fiscale, data_nascita: datetime.date, cellulare, email, password,
                             gruppo_sanguigno, idoneita= True):
         donatore = Donatore(nome, cognome, codice_fiscale, data_nascita, cellulare, email, password,
                             gruppo_sanguigno, idoneita= True)
