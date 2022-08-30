@@ -45,7 +45,7 @@ class VistaInserisciDonatore(QWidget):
                     QMessageBox.critical(self, 'Errore', 'Inserire tutte le informazioni richieste', QMessageBox.Ok, QMessageBox.Ok)
                     return
         amministratore = Amministratore(376, "AMMINISTRATORESTUPIDO", "Paniccia",
-                 25/12/0000, "osvaldopaniccia@boh.sium", "Osvaldo", "password")
+                 2000-12-25, "osvaldopaniccia@boh.sium", "Osvaldo", "password")  #errore qui
         try:
             nome = self.qLines["nome"].text()
             cognome = self.qLines["cognome"].text()
@@ -56,8 +56,8 @@ class VistaInserisciDonatore(QWidget):
             cellulare = self.qLines["Cellulare"].text()
             idoneita = self.qLines["Idoneita"].text()
             password = self.qLines["Password"].text()
-            amministratore.__iscriviDonatore__([], nome, cognome, codice_fiscale, data_nascita, cellulare, email, password,
-                            gruppo_sanguigno, idoneita)
+            amministratore.__iscriviDonatore__(nome, cognome, codice_fiscale, data_nascita, cellulare, email,
+                                               password, gruppo_sanguigno, idoneita)
         except:
             QMessageBox.critical(self, 'Errore', 'Controlla i dati inseriti', QMessageBox.Ok, QMessageBox.Ok)
             return

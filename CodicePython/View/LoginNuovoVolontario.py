@@ -33,7 +33,7 @@ class LoginNuovoVolontario(QWidget):
             self.iscrivi_volontario = VistaInserisciVolontario(callback=VistaInserisciVolontario.aggiungi_volontario)
             self.iscrivi_volontario.show()
         else:
-            QMessageBox.critical(self, 'Errore', 'Controlla i dati inseriti', QMessageBox.Ok, QMessageBox.Ok)
+            QMessageBox.critical(self, 'Errore', 'Username e/o password errati', QMessageBox.Ok, QMessageBox.Ok)
             return
 
 

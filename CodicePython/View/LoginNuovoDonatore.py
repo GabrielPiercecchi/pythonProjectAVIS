@@ -32,7 +32,7 @@ class LoginNuovoDonatore(QWidget):
             self.iscrivi_donatore = VistaInserisciDonatore(callback=VistaInserisciDonatore.aggiungi_donatore)
             self.iscrivi_donatore.show()
         else:
-            QMessageBox.critical(self, 'Errore', 'Controlla i dati inseriti', QMessageBox.Ok, QMessageBox.Ok)
+            QMessageBox.critical(self, 'Errore', 'Username e/o password errati', QMessageBox.Ok, QMessageBox.Ok)
             return
 
 

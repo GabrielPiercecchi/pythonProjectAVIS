@@ -22,8 +22,8 @@ class Amministratore(Utente):
         Utente.Utente.__init__(self, cellulare, codice_fiscale, cognome,
                                data_nascita, email, nome, password)
 
-    def __iscriviDonatore__(self, nome, cognome, codice_fiscale, data_nascita, cellulare, email, password,
-                            gruppo_sanguigno):
+    def __iscriviDonatore__(self, nome, cognome, codice_fiscale, data_nascita: datetime, cellulare, email, password,
+                            gruppo_sanguigno, idoneita= True):
         donatore = Donatore(nome, cognome, codice_fiscale, data_nascita, cellulare, email, password,
                             gruppo_sanguigno, idoneita= True)
         if os.path.isfile('Model/Donatori.pickle'):
