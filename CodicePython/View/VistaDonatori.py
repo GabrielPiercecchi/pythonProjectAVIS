@@ -59,7 +59,7 @@ class VistaDonatori(QWidget):
         self.list_view.setModel(listview_model)
 
     def show_selected_info(self):
-        amministratore = Amministratore(3473984100, "AMMINISTRATORESTUPIDO", "Paniccia",
+        amministratore = Amministratore(376, "AMMINISTRATORESTUPIDO", "Paniccia",
                  25/12/0000, "osvaldopaniccia@boh.sium", "Osvaldo", "password")
         try:
             selected = self.list_view.selectedIndexes()[0].data()

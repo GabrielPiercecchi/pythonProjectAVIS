@@ -1,5 +1,6 @@
 from datetime import datetime
 
+from CodicePython.Model.Amministratore import Amministratore
 from CodicePython.Model.Donatore import Donatore
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QLabel, QLineEdit, QPushButton, QMessageBox
 
@@ -36,14 +37,15 @@ class VistaInserisciDonatore(QWidget):
         self.qLines[nome] = current_text
         self.v_layout.addWidget(current_text)
 
-    def aggiungi_donatore(self, amministratore=None):  #problema Amministratore !!!!!
+    def aggiungi_donatore(self):  #problema Amministratore !!!!!
         # se serve, aggiungere un try catch. In questo caso no poiche il CF può essere una stringa
         for value in self.qLines.values():
             if isinstance(value, QLineEdit):
                 if value.text() == "":
                     QMessageBox.critical(self, 'Errore', 'Inserire tutte le informazioni richieste', QMessageBox.Ok, QMessageBox.Ok)
                     return
-        donatore = Donatore()
+        amministratore = Amministratore(376, "AMMINISTRATORESTUPIDO", "Paniccia",
+                 25/12/0000, "osvaldopaniccia@boh.sium", "Osvaldo", "password")
         try:
             nome = self.qLines["nome"].text()
             cognome = self.qLines["cognome"].text()
