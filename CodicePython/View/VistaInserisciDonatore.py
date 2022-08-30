@@ -43,24 +43,33 @@ class VistaInserisciDonatore(QWidget):
             if isinstance(value, QLineEdit):
                 if value.text() == "":
                     QMessageBox.critical(self, 'Errore', 'Inserire tutte le informazioni richieste',
-                                         QMessageBox.Ok, QMessageBox.Ok)
+                                          QMessageBox.Ok, QMessageBox.Ok)
                     return
         amministratore = Amministratore(376, "AMMINISTRATORESTUPIDO", "Paniccia",
                  2000-12-25, "osvaldopaniccia@boh.sium", "Osvaldo", "password")  #errore qui
         try:  #DA CONTROLLARE
             nome = self.qLines["nome"].text()
+            print(nome)
             cognome = self.qLines["cognome"].text()
-            codice_fiscale = self.qLines["CF"].text()
-            gruppo_sanguigno = self.qLines["Gruppo sanguigno"].text()
-            data_nascita = datetime.strptime(self.qLines["DataNascita"].text(), '%Y/%m/%d')
-            email = self.qLines["Email"].text()
-            cellulare = self.qLines["Cellulare"].text()
-            idoneita = self.qLines["Idoneita"].text()
-            password = self.qLines["Password"].text()
+            print(cognome)
+            codice_fiscale = self.qLines["codice_fiscale"].text()
+            print(codice_fiscale)
+            gruppo_sanguigno = self.qLines["gruppo sanguigno"].text()
+            print(gruppo_sanguigno)
+            data_nascita = datetime.strptime(self.qLines["data di nascita"].text(), '%Y/%m/%d')
+            print(data_nascita)
+            email = self.qLines["email"].text()
+            print(email)
+            cellulare = self.qLines["cellulare"].text()
+            print(cellulare)
+            idoneita = self.qLines["idoneita"].text()
+            print(idoneita)
+            password = self.qLines["password"].text()
+            print(password)
             amministratore.__iscriviDonatore__(nome, cognome, codice_fiscale, data_nascita, cellulare, email,
                                                password, gruppo_sanguigno, idoneita)
         except:
             QMessageBox.critical(self, 'Errore', 'Controlla i dati inseriti', QMessageBox.Ok, QMessageBox.Ok)
             return
-        self.callback()
+     #   self.callback()
         self.close()

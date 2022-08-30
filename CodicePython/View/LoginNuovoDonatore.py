@@ -27,7 +27,6 @@ class LoginNuovoDonatore(QWidget):
     def log(self):
         username = self.qLines["username"].text()
         password = self.qLines["password"].text()
-        print(username)
         if username == "username" and password == "password":
             self.iscrivi_donatore = VistaInserisciDonatore(callback=VistaInserisciDonatore.aggiungi_donatore)
             self.iscrivi_donatore.show()

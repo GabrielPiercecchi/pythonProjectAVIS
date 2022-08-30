@@ -14,20 +14,22 @@ from CodicePython.Model.Volontario import Volontario
 
 
 class Amministratore(Utente):
-
     conta_tessere = 1
 
     def __init__(self, cellulare, codice_fiscale, cognome,
                  data_nascita: datetime.date, email, nome, password):
         Utente.__init__(self, cellulare, codice_fiscale, cognome,
-                               data_nascita, email, nome, password)
+                        data_nascita, email, nome, password)
 
-    def __iscriviDonatore__(self, nome, cognome, codice_fiscale, data_nascita: datetime.date, cellulare, email, password,
-                            gruppo_sanguigno, idoneita= True):
-        donatore = Donatore(nome, cognome, codice_fiscale, data_nascita, cellulare, email, password,
-                            gruppo_sanguigno, idoneita= True)
+    def __iscriviDonatore__(self, nome, cognome, codice_fiscale, data_nascita: datetime.date, cellulare, email,
+                            password, gruppo_sanguigno, idoneita=True):
+        donatore = Donatore(cellulare, codice_fiscale, cognome, data_nascita, email, nome, password,
+                            self.conta_tessere, gruppo_sanguigno, True)
+
+        ####PROBLEMA CON LA RICERCA DEL FILE
+
         if os.path.isfile('Model/Donatori.pickle'):
-            with open('Model/Donatori.pickle', 'rb') as f:  #lettura
+            with open('Model/Donatori.pickle', 'rb') as f:  # lettura
                 elenco_donatori = pickle.load(f)
         elenco_donatori.append(donatore)
         with open('Model/Donatori.pickle', 'wb') as f:
@@ -53,9 +55,8 @@ class Amministratore(Utente):
                         donatori.pop(donatore)
                 pickle.dump(donatori, f, pickle.HIGHEST_PROTOCOL)
 
-
     def __crea_tessera__(self, conta_tessere, nome, cognome):
-        tessera = Tessera(conta_tessere, nome, cognome, donazioni = [], numero_donazioni=0)
+        tessera = Tessera(conta_tessere, nome, cognome, donazioni=[], numero_donazioni=0)
         if os.path.isfile('Model/Tessere.pickle'):
             with open('Model/Tessere.pickle', 'rb') as f:  # lettura
                 tessere = pickle.load(f)
@@ -84,7 +85,6 @@ class Amministratore(Utente):
                         tessere.pop(tessera)
                 pickle.dump(tessere, f, pickle.HIGHEST_PROTOCOL)
 
-
     def __visualizzaDisponibilita__(self):
         orario = []
         with open('../orari.txt', 'r') as fp:
@@ -92,8 +92,8 @@ class Amministratore(Utente):
                 orario.append(line)
         return orario
 
-
-    def __modificaStatoDonazione__(self, anno: int, mese: int, giorno: int, ora: int, minuto: int, donatore: int):  #DA FARE!!!
+    def __modificaStatoDonazione__(self, anno: int, mese: int, giorno: int, ora: int, minuto: int,
+                                   donatore: int):  # DA FARE!!!
         donazioni = []
         with open('../orari.txt', 'r') as fp:
             for line in fp:
@@ -105,22 +105,24 @@ class Amministratore(Utente):
                 hour = linea[11:12]
                 minute = linea[14:15]
                 disponibile = linea[17]
-                donazione = Donazione(int(year), int(month), int(day), int(hour), int(minute), bool(disponibile))  #aggiungere attributo codice???
+                donazione = Donazione(int(year), int(month), int(day), int(hour), int(minute),
+                                      bool(disponibile))  # aggiungere attributo codice???
                 donazioni.append(donazione)
             for donazione in donazioni:
                 if donazione.year == anno and donazione.month == mese and donazione.day == giorno and donazione.hour == ora and donazione.minute == minuto:
                     if donatore == 0:
                         Donazione.disponibile = "L"
-                        #modifica tessera donatore
+                        # modifica tessera donatore
                     else:
                         Donazione.disponibile = "O"
-                        #modifica tessera donatore
+                        # modifica tessera donatore
         with open('../orari.txt', 'w') as fp:
             for donazione in donazioni:
-                fp.write(str(donazione.year) + ' ' + str(donazione.month) + ' ' + str(donazione.day) + ' ' + str(donazione.hour) + ' ' + str(donazione.minute) + ' ' + str(donazione.disponibile))
+                fp.write(str(donazione.year) + ' ' + str(donazione.month) + ' ' + str(donazione.day) + ' ' + str(
+                    donazione.hour) + ' ' + str(donazione.minute) + ' ' + str(donazione.disponibile))
 
     def iscriviDipendente(self, nome, cognome, codice_fiscale, data_nascita, cellulare, email, password,
-         IBAN):
+                          IBAN):
         dipendente = Dipendente(nome, cognome, codice_fiscale, data_nascita, cellulare, email, password, IBAN)
         if os.path.isfile('Model/Dipendenti.pickle'):
             with open('Model/Dipendenti.pickle', 'rb') as f:  # lettura
@@ -140,7 +142,7 @@ class Amministratore(Utente):
         else:
             return None
 
-    def eliminaDipendente(self, codice_fiscale = ""):
+    def eliminaDipendente(self, codice_fiscale=""):
         if os.path.isfile('Model/Dipendenti.pickle'):
             with open('Model/Dipendenti.pickle', 'wb+') as f:
                 dipendenti = dict(pickle.load(f))
@@ -150,9 +152,9 @@ class Amministratore(Utente):
                 pickle.dump(dipendenti, f, pickle.HIGHEST_PROTOCOL)
 
     def iscriviVolontario(self, nome, cognome, codice_fiscale, data_nascita, cellulare, email, password,
-         ore_annuali, ore_settimanali):
+                          ore_annuali, ore_settimanali):
         volontario = Volontario(nome, cognome, codice_fiscale, data_nascita, cellulare, email, password,
-         ore_annuali, ore_settimanali)
+                                ore_annuali, ore_settimanali)
         if os.path.isfile('Model/Volontari.pickle'):
             with open('Model/Volontari.pickle', 'rb') as f:  # lettura
                 volontari = pickle.load(f)
