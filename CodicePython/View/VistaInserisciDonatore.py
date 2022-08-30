@@ -42,16 +42,17 @@ class VistaInserisciDonatore(QWidget):
         for value in self.qLines.values():
             if isinstance(value, QLineEdit):
                 if value.text() == "":
-                    QMessageBox.critical(self, 'Errore', 'Inserire tutte le informazioni richieste', QMessageBox.Ok, QMessageBox.Ok)
+                    QMessageBox.critical(self, 'Errore', 'Inserire tutte le informazioni richieste',
+                                         QMessageBox.Ok, QMessageBox.Ok)
                     return
         amministratore = Amministratore(376, "AMMINISTRATORESTUPIDO", "Paniccia",
                  2000-12-25, "osvaldopaniccia@boh.sium", "Osvaldo", "password")  #errore qui
-        try:
+        try:  #DA CONTROLLARE
             nome = self.qLines["nome"].text()
             cognome = self.qLines["cognome"].text()
             codice_fiscale = self.qLines["CF"].text()
             gruppo_sanguigno = self.qLines["Gruppo sanguigno"].text()
-            data_nascita = datetime.strptime(self.qLines["DataNascita"].text(), '%d/%m/%Y')
+            data_nascita = datetime.strptime(self.qLines["DataNascita"].text(), '%Y/%m/%d')
             email = self.qLines["Email"].text()
             cellulare = self.qLines["Cellulare"].text()
             idoneita = self.qLines["Idoneita"].text()
