@@ -19,10 +19,12 @@ class VistaInserisciVolontario(QWidget):
         self.add_info_text("idoneita 118", "Idoneita 118")
         self.add_info_text("email", "Email")
         self.add_info_text("cellulare", "Cellulare")
-        self.add_info_text("idoneita", "Idoneita")
         self.add_info_text("password", "Password")
         self.add_info_text("ore annuali", "Ore Annuali")
         self.add_info_text("ore settimanali", "Ore Settimanali")
+        self.add_info_text("orariolavorativo", "Orario Lavorativo")
+        self.add_info_text("stato", "Stato")
+        self.add_info_text("turno", "Turno")
 
         btn_ok = QPushButton("Ok")
         btn_ok.clicked.connect(self.aggiungi_volontario)
@@ -52,16 +54,19 @@ class VistaInserisciVolontario(QWidget):
             nome = self.qLines["nome"].text()
             cognome = self.qLines["cognome"].text()
             codice_fiscale = self.qLines["codice_fiscale"].text()
-            idoneita_118 = self.qLines["idoneita 118"].text()
+            idoneita118 = self.qLines["idoneita 118"].text()
             data_nascita = datetime.strptime(self.qLines["data di nascita"].text(), '%Y/%m/%d')
             email = self.qLines["email"].text()
             password = self.qLines["password"].text()
             cellulare = self.qLines["cellulare"].text()
-            idoneita = self.qLines["idoneita"].text()
             ore_annuali = self.qLines["ore annuali"].text()
             ore_settimanali = self.qLines["ore settimanali"].text()
+            orariolavorativo = self.qLines["orario lavorativo"].text()  # aggiungere specifica per datetime
+            stato = self.qLines["stato"].text()
+            turno = self.qLines["turno"].text()  # aggiungere specifica per datetime
+
             amministratore.iscriviVolontario(nome, cognome, codice_fiscale, data_nascita, cellulare, email, password,
-                                             ore_annuali, ore_settimanali)
+                                             idoneita118, orariolavorativo, stato, turno, ore_annuali, ore_settimanali)
         except:
             QMessageBox.critical(self, 'Errore', 'Controlla i dati inseriti', QMessageBox.Ok, QMessageBox.Ok)
             return
