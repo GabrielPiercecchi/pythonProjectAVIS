@@ -21,6 +21,7 @@ class Amministratore(Utente):
         Utente.__init__(self, cellulare, codice_fiscale, cognome,
                         data_nascita, email, nome, password)
         self.elenco_donatori = []
+        self.elenco_volontari = []
 
     def __iscriviDonatore__(self, nome, cognome, codice_fiscale, data_nascita: datetime.date, cellulare, email,
                             password, gruppo_sanguigno, idoneita=True):
@@ -158,10 +159,10 @@ class Amministratore(Utente):
                                 ore_annuali, ore_settimanali)
         if os.path.isfile('Model/Volontari.pickle'):
             with open('Model/Volontari.pickle', 'rb') as f:  # lettura
-                volontari = pickle.load(f)
-        volontari.append(volontario)
+                self.elenco_volontari = pickle.load(f)
+        self.elenco_volontari.append(volontario)
         with open('Model/Dipendenti.pickle', 'wb') as f:
-            pickle.dump(volontari, f, pickle.HIGHEST_PROTOCOL)
+            pickle.dump(self.elenco_volontari, f, pickle.HIGHEST_PROTOCOL)
 
     def ricercaVolontario(self, codice_fiscale=""):
         if os.path.isfile('Model/Volontari.pickle'):

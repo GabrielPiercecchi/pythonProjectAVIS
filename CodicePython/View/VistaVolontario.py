@@ -42,5 +42,5 @@ class VistaVolontario(QWidget):
         pass
 
     def show_new(self):
-        self.login = LoginNuovoVolontario(callback=LoginNuovoVolontario.log)  # controllare
+        self.login = LoginNuovoVolontario(callback=LoginNuovoVolontario.log)
         self.login.show()

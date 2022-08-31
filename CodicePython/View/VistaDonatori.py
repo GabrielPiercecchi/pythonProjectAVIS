@@ -1,7 +1,7 @@
 import os.path
 import pickle
 
-from Tools.scripts.make_ctype import values
+#from Tools.scripts.make_ctype import values
 
 from CodicePython.Model.Amministratore import Amministratore
 from CodicePython.View.LoginNuovoDonatore import LoginNuovoDonatore
@@ -74,5 +74,5 @@ class VistaDonatori(QWidget):
             return
 
     def show_new(self):
-        self.login = LoginNuovoDonatore(callback=LoginNuovoDonatore.log)  #controllare
+        self.login = LoginNuovoDonatore(callback=LoginNuovoDonatore.log)
         self.login.show()

@@ -47,15 +47,15 @@ class VistaInserisciVolontario(QWidget):
         try:
             nome = self.qLines["nome"].text()
             cognome = self.qLines["cognome"].text()
-            codice_fiscale = self.qLines["CF"].text()
-            idoneita_118 = self.qLines["Idoneita 118"].text()
-            data_nascita = datetime.strptime(self.qLines["DataNascita"].text(), '%d/%m/%Y')
-            email = self.qLines["Email"].text()
-            cellulare = self.qLines["Cellulare"].text()
-            idoneita = self.qLines["Idoneita"].text()
-            password = self.qLines["Password"].text()
-            amministratore.__iscriviVolontario__([],  nome, cognome, codice_fiscale, data_nascita, cellulare, email, password,
-                                                ore_annuali = 0, ore_settimanali = 0)
+            codice_fiscale = self.qLines["codice_fiscale"].text()
+            idoneita_118 = self.qLines["idoneita 118"].text()
+            data_nascita = datetime.strptime(self.qLines["data di nascita"].text(), '%Y/%m/%d')
+            email = self.qLines["email"].text()
+            cellulare = self.qLines["cellulare"].text()
+            idoneita = self.qLines["idoneita"].text()
+            password = self.qLines["password"].text()
+            amministratore.__iscriviVolontario__(nome, cognome, codice_fiscale, data_nascita, cellulare, email, password,
+                                                ore_annuali = 0, ore_settimanali = 0)  #inserire tutti gli attributi
         except:
             QMessageBox.critical(self, 'Errore', 'Controlla i dati inseriti', QMessageBox.Ok, QMessageBox.Ok)
             return
