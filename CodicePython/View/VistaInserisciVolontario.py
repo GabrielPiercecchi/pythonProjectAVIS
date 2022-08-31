@@ -20,6 +20,8 @@ class VistaInserisciVolontario(QWidget):
         self.add_info_text("cellulare", "Cellulare")
         self.add_info_text("idoneita", "Idoneita")
         self.add_info_text("password", "Password")
+        self.add_info_text("ore annuali", "Ore Annuali")
+        self.add_info_text("ore settimanali", "Ore Settimanali")
 
         btn_ok = QPushButton("Ok")
         btn_ok.clicked.connect(self.aggiungi_volontario)
@@ -29,19 +31,19 @@ class VistaInserisciVolontario(QWidget):
         self.setLayout(self.v_layout)
         self.setWindowTitle("Nuovo volontario")
 
-
     def add_info_text(self, nome, label):
         self.v_layout.addWidget(QLabel(label))
         current_text = QLineEdit(self)
         self.qLines[nome] = current_text
         self.v_layout.addWidget(current_text)
 
-    def aggiungi_volontario(self, amministratore=None):  #problema Amministratore !!!!!
+    def aggiungi_volontario(self, amministratore=None):  # problema Amministratore !!!!!
         # se serve, aggiungere un try catch. In questo caso no poiche il CF può essere una stringa
         for value in self.qLines.values():
             if isinstance(value, QLineEdit):
                 if value.text() == "":
-                    QMessageBox.critical(self, 'Errore', 'Inserire tutte le informazioni richieste', QMessageBox.Ok, QMessageBox.Ok)
+                    QMessageBox.critical(self, 'Errore', 'Inserire tutte le informazioni richieste', QMessageBox.Ok,
+                                         QMessageBox.Ok)
                     return
         volontario = Volontario()
         try:
@@ -54,10 +56,12 @@ class VistaInserisciVolontario(QWidget):
             cellulare = self.qLines["cellulare"].text()
             idoneita = self.qLines["idoneita"].text()
             password = self.qLines["password"].text()
-            amministratore.__iscriviVolontario__(nome, cognome, codice_fiscale, data_nascita, cellulare, email, password,
-                                                ore_annuali = 0, ore_settimanali = 0)  #inserire tutti gli attributi
+            ore_annuali = self.qLines["ore annuali"].text()
+            ore_settimanali = self.qLines["ore settimanali"].text()
+            amministratore.__iscriviVolontario__(nome, cognome, codice_fiscale, data_nascita, cellulare, email,
+                                                 password, ore_annuali, ore_settimanali, idoneita, idoneita_118)
         except:
             QMessageBox.critical(self, 'Errore', 'Controlla i dati inseriti', QMessageBox.Ok, QMessageBox.Ok)
             return
-        self.callback()
+        # self.callback()
         self.close()
