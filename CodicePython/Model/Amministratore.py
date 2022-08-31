@@ -20,6 +20,7 @@ class Amministratore(Utente):
                  data_nascita: datetime.date, email, nome, password):
         Utente.__init__(self, cellulare, codice_fiscale, cognome,
                         data_nascita, email, nome, password)
+        self.elenco_donatori = []
 
     def __iscriviDonatore__(self, nome, cognome, codice_fiscale, data_nascita: datetime.date, cellulare, email,
                             password, gruppo_sanguigno, idoneita=True):
@@ -30,10 +31,10 @@ class Amministratore(Utente):
 
         if os.path.isfile('Model/Donatori.pickle'):
             with open('Model/Donatori.pickle', 'rb') as f:  # lettura
-                elenco_donatori = pickle.load(f)
-        elenco_donatori.append(donatore)
+                self.elenco_donatori = pickle.load(f)
+        self.elenco_donatori.append(donatore)
         with open('Model/Donatori.pickle', 'wb') as f:
-            pickle.dump(elenco_donatori, f, pickle.HIGHEST_PROTOCOL)
+            pickle.dump(self.elenco_donatori, f, pickle.HIGHEST_PROTOCOL)
 
     def ricercaDonatore(self, codice_fiscale):
         if os.path.isfile('Model/Donatori.pickle'):

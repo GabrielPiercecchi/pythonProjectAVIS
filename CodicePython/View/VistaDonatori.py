@@ -1,9 +1,7 @@
 import os.path
 import pickle
 
- #from Tools.scripts.make_ctype import values  da vedere
-
-from CodicePython.Model.Donatore import Donatore
+from Tools.scripts.make_ctype import values
 
 from CodicePython.Model.Amministratore import Amministratore
 from CodicePython.View.LoginNuovoDonatore import LoginNuovoDonatore
@@ -38,6 +36,7 @@ class VistaDonatori(QWidget):
         self.setWindowTitle("Donatori")
 
     def load_donatori(self):
+        print("load")
         if os.path.isfile('Model/Donatori.pickle'):
             with open('Model/Donatori.pickle', 'rb') as f:
                 current = dict(pickle.load(f))
@@ -60,7 +59,7 @@ class VistaDonatori(QWidget):
 
     def show_selected_info(self):
         amministratore = Amministratore(376, "AMMINISTRATORESTUPIDO", "Paniccia",
-                 25/12/0000, "osvaldopaniccia@boh.sium", "Osvaldo", "password")
+                 25/12/2000, "osvaldopaniccia@boh.sium", "Osvaldo", "password")
         try:
             selected = self.list_view.selectedIndexes()[0].data()
             tipo = selected.split("-")[1].strip().split(" ")[0]
