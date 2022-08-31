@@ -46,7 +46,7 @@ class VistaInserisciDonatore(QWidget):
                                           QMessageBox.Ok, QMessageBox.Ok)
                     return
         amministratore = Amministratore(376, "AMMINISTRATORESTUPIDO", "Paniccia",
-                 2000-12-25, "osvaldopaniccia@boh.sium", "Osvaldo", "password")  #errore qui
+                 2000-12-25, "osvaldopaniccia@boh.sium", "Osvaldo", "password")
         try:  #DA CONTROLLARE
             nome = self.qLines["nome"].text()
             print(nome)

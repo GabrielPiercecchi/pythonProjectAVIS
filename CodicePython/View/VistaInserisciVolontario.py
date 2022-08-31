@@ -1,5 +1,6 @@
 from datetime import datetime
 
+from CodicePython.Model.Amministratore import Amministratore
 from CodicePython.Model.Volontario import Volontario
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QLabel, QLineEdit, QPushButton, QMessageBox
 
@@ -37,7 +38,7 @@ class VistaInserisciVolontario(QWidget):
         self.qLines[nome] = current_text
         self.v_layout.addWidget(current_text)
 
-    def aggiungi_volontario(self, amministratore=None):  # problema Amministratore !!!!!
+    def aggiungi_volontario(self):  # problema Amministratore !!!!!
         # se serve, aggiungere un try catch. In questo caso no poiche il CF può essere una stringa
         for value in self.qLines.values():
             if isinstance(value, QLineEdit):
@@ -45,7 +46,8 @@ class VistaInserisciVolontario(QWidget):
                     QMessageBox.critical(self, 'Errore', 'Inserire tutte le informazioni richieste', QMessageBox.Ok,
                                          QMessageBox.Ok)
                     return
-        volontario = Volontario()
+        amministratore = Amministratore(376, "AMMINISTRATORESTUPIDO", "Paniccia",
+                                        2000 - 12 - 25, "osvaldopaniccia@boh.sium", "Osvaldo", "password")
         try:
             nome = self.qLines["nome"].text()
             cognome = self.qLines["cognome"].text()
@@ -53,13 +55,13 @@ class VistaInserisciVolontario(QWidget):
             idoneita_118 = self.qLines["idoneita 118"].text()
             data_nascita = datetime.strptime(self.qLines["data di nascita"].text(), '%Y/%m/%d')
             email = self.qLines["email"].text()
+            password = self.qLines["password"].text()
             cellulare = self.qLines["cellulare"].text()
             idoneita = self.qLines["idoneita"].text()
-            password = self.qLines["password"].text()
             ore_annuali = self.qLines["ore annuali"].text()
             ore_settimanali = self.qLines["ore settimanali"].text()
-            amministratore.__iscriviVolontario__(nome, cognome, codice_fiscale, data_nascita, cellulare, email,
-                                                 password, ore_annuali, ore_settimanali, idoneita, idoneita_118)
+            amministratore.iscriviVolontario(nome, cognome, codice_fiscale, data_nascita, cellulare, email, password,
+                                             ore_annuali, ore_settimanali)
         except:
             QMessageBox.critical(self, 'Errore', 'Controlla i dati inseriti', QMessageBox.Ok, QMessageBox.Ok)
             return
