@@ -1,8 +1,6 @@
 import os.path
 import pickle
 
-#from Tools.scripts.make_ctype import values
-
 from CodicePython.Model.Amministratore import Amministratore
 from CodicePython.View.LoginNuovoDonatore import LoginNuovoDonatore
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
@@ -35,12 +33,12 @@ class VistaDonatori(QWidget):
         self.resize(600, 300)
         self.setWindowTitle("Donatori")
 
-    def load_donatori(self):
+    def load_donatori(self):  ##RICONTROLLO
         print("load")
         if os.path.isfile('Model/Donatori.pickle'):
             with open('Model/Donatori.pickle', 'rb') as f:
                 current = dict(pickle.load(f))
-                self.donatori.extend(current, values())
+                self.donatori.extend(current, values)
 
     def update_donatori(self):
         self.donatori = []

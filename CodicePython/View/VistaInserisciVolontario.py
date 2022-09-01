@@ -48,17 +48,27 @@ class VistaInserisciVolontario(QWidget):
                                         2000 - 12 - 25, "osvaldopaniccia@boh.sium", "Osvaldo", "password")
         try:
             nome = self.qLines["nome"].text()
+            print(nome)
             cognome = self.qLines["cognome"].text()
+            print(cognome)
             codice_fiscale = self.qLines["codice_fiscale"].text()
+            print(codice_fiscale)
             idoneita118 = self.qLines["idoneita 118"].text()
+            print(idoneita118)
             data_nascita = datetime.strptime(self.qLines["data di nascita"].text(), '%Y/%m/%d')
+            print(data_nascita)
             email = self.qLines["email"].text()
+            print(email)
             password = self.qLines["password"].text()
+            print(password)
             cellulare = self.qLines["cellulare"].text()
+            print(cellulare)
             stato = self.qLines["stato"].text()
+            print(stato)
             amministratore.iscriviVolontario(cellulare, codice_fiscale, cognome, data_nascita, email, nome, password,
                                              idoneita118, stato)
-        except:
+        except Exception as e:
+            print(e)
             QMessageBox.critical(self, 'Errore', 'Controlla i dati inseriti', QMessageBox.Ok, QMessageBox.Ok)
             return
         # self.callback()

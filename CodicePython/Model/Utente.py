@@ -2,8 +2,7 @@ import datetime
 
 
 class Utente:
-    def __init__(self, cellulare: int, codice_fiscale: "", cognome: "",
-                 data_nascita: datetime.date, email: "", nome: "", password: ""):
+    def __init__(self, cellulare, codice_fiscale, cognome, data_nascita, email, nome, password):
         self.cellulare = cellulare
         self.codice_fiscale = codice_fiscale
         self.cognome = cognome

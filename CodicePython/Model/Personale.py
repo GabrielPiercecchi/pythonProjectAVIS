@@ -8,10 +8,8 @@ class Personale(Utente):
 
     lista_rapportini = []
     
-    def __init__(self, cellulare: int, codice_fiscale: "", cognome: "",
-                 data_nascita: datetime.date, email: "", nome: "", password: "", idoneita118: bool,
-                 stato: bool):
-        super().__init__(cellulare, codice_fiscale, cognome, data_nascita, email, nome, password)
+    def __init__(self, cellulare, codice_fiscale, cognome, data_nascita, email, nome, password, idoneita118, stato):   #CONTROLLARE QUA
+        Utente.__init__(self, cellulare, codice_fiscale, cognome, data_nascita, email, nome, password)
         self.idoneita118 = idoneita118
         self.stato = stato
     
