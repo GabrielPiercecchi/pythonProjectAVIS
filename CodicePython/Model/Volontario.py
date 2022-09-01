@@ -3,7 +3,7 @@ import datetime
 
 class Volontario(Personale):
     def __init__(self, cellulare, codice_fiscale, cognome, data_nascita, email, nome, password, idoneita118, stato):
-        super(Personale, self).__init__(cellulare, codice_fiscale, cognome, data_nascita, email, nome, password, idoneita118, stato)
+       Personale.__init__(self, cellulare, codice_fiscale, cognome, data_nascita, email, nome, password, idoneita118, stato)
 
     def getInfoVolontario(self):
         info = self.getinfoPersonale()
