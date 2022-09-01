@@ -7,10 +7,10 @@ from CodicePython.Model.Utente import Utente
 
 class Donatore(Utente):
 
-    def __init__(self, cellulare: int, codice_fiscale: "", cognome: "", data_nascita: datetime.date,
-                 email: "", nome: "", password: "", tessera: Tessera, gruppo_sanguigno: "", idoneita: bool):
+    def __init__(self, cellulare, codice_fiscale, cognome, data_nascita,
+                 email, nome, password, numtessera, gruppo_sanguigno, idoneita):
         Utente.__init__(self, cellulare, codice_fiscale, cognome, data_nascita, email, nome, password)
-        self.tessera = tessera
+        self.numtessera = numtessera
         self.gruppo_sanguigno = gruppo_sanguigno
         self.idoneita = idoneita
 
