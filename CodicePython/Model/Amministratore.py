@@ -153,10 +153,10 @@ class Amministratore(Utente):
                         dipendenti.pop(dipendente)
                 pickle.dump(dipendenti, f, pickle.HIGHEST_PROTOCOL)
 
-    def iscriviVolontario(self, nome, cognome, codice_fiscale, data_nascita, cellulare, email, password,
-                          idoneita118, orariolavorativo, stato, turno,ore_annuali, ore_settimanali):
-        volontario = Volontario(cellulare, codice_fiscale, cognome, data_nascita, email, nome, password,
-                                idoneita118, orariolavorativo, stato, turno, ore_annuali, ore_settimanali)
+    def iscriviVolontario(self, cellulare, codice_fiscale, cognome, data_nascita, email, nome, password, idoneita118,
+                          stato):
+        volontario = Volontario(cellulare, codice_fiscale, cognome, data_nascita, email, nome, password, idoneita118,
+                                stato)
         if os.path.isfile('Model/Volontari.pickle'):
             with open('Model/Volontari.pickle', 'rb') as f:  # lettura
                 self.elenco_volontari = pickle.load(f)

@@ -20,11 +20,7 @@ class VistaInserisciVolontario(QWidget):
         self.add_info_text("email", "Email")
         self.add_info_text("cellulare", "Cellulare")
         self.add_info_text("password", "Password")
-        self.add_info_text("ore annuali", "Ore Annuali")
-        self.add_info_text("ore settimanali", "Ore Settimanali")
-        self.add_info_text("orariolavorativo", "Orario Lavorativo")
         self.add_info_text("stato", "Stato")
-        self.add_info_text("turno", "Turno")
 
         btn_ok = QPushButton("Ok")
         btn_ok.clicked.connect(self.aggiungi_volontario)
@@ -59,14 +55,10 @@ class VistaInserisciVolontario(QWidget):
             email = self.qLines["email"].text()
             password = self.qLines["password"].text()
             cellulare = self.qLines["cellulare"].text()
-            ore_annuali = self.qLines["ore annuali"].text()
-            ore_settimanali = self.qLines["ore settimanali"].text()
-            orariolavorativo = self.qLines["orario lavorativo"].text()  # aggiungere specifica per datetime
             stato = self.qLines["stato"].text()
-            turno = self.qLines["turno"].text()  # aggiungere specifica per datetime
 
-            amministratore.iscriviVolontario(nome, cognome, codice_fiscale, data_nascita, cellulare, email, password,
-                                             idoneita118, orariolavorativo, stato, turno, ore_annuali, ore_settimanali)
+            amministratore.iscriviVolontario(cellulare, codice_fiscale, cognome, data_nascita, email, nome, password,
+                                             idoneita118, stato)
         except:
             QMessageBox.critical(self, 'Errore', 'Controlla i dati inseriti', QMessageBox.Ok, QMessageBox.Ok)
             return

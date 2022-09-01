@@ -10,18 +10,15 @@ class Personale(Utente):
     
     def __init__(self, cellulare: int, codice_fiscale: "", cognome: "",
                  data_nascita: datetime.date, email: "", nome: "", password: "", idoneita118: bool,
-                 orariolavorativo: datetime.date, stato: bool, turno: datetime.date):
+                 stato: bool):
         super().__init__(cellulare, codice_fiscale, cognome, data_nascita, email, nome, password)
         self.idoneita118 = idoneita118
-        self.orario_lavorativo = orario_lavorativo
         self.stato = stato
-        self.turno = turno
     
     def getinfoPersonale(self):
         info = self.getinfoUtente()
         info += {
             "Idoneità 118": self.idoneita118,
-            "Orario lavorativo": self.orario_lavorativo,
             "Stato": self.stato,
             "Turno": self.turno
         }
@@ -29,9 +26,6 @@ class Personale(Utente):
 
     def getIdoneita118(self):
         return self.idoneita118
-
-    def getOrario_lavorativo(self):
-        return self.orario_lavorativo
 
     def getStato(self):
         return self.stato
@@ -41,20 +35,14 @@ class Personale(Utente):
 
     def setinfoPersonale(self, cellulare: int, codice_fiscale: "", cognome: "",
                  data_nascita: datetime.date, email: "", nome: "", password: "", idoneita118: bool,
-                 orario_lavorativo: datetime.date, stato: bool, turno: datetime.date):
+                 stato: bool):
         self.setinfoUtente(cellulare, codice_fiscale, cognome,
                  data_nascita, email, nome, password)
         self.idoneita118 = idoneita118
-        self.orario_lavorativo = orario_lavorativo
-        self.turno = turno
         self.stato = stato
 
     def setIdoneita118(self, idoneita: bool):
         self.idoneita118 = idoneita
-
-    def setOrario_lavorativo(self, orario: datetime.date):
-        self.orario_lavorativo = orario
-
     def setStato(self, stato: bool):
         self.stato = stato
 
@@ -68,6 +56,6 @@ class Personale(Utente):
                 rapportini = pickle.load(f)
         rapportini.append(rapportino)
         with open('Model/Rapportino.pickle', 'wb') as f:
-            pickle.dump(rappprtini, f, pickle.HIGHEST_PROTOCOL)
+            pickle.dump(rapportini, f, pickle.HIGHEST_PROTOCOL)
         return True
 
