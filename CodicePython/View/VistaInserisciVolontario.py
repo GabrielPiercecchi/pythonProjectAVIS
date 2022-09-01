@@ -56,7 +56,6 @@ class VistaInserisciVolontario(QWidget):
             password = self.qLines["password"].text()
             cellulare = self.qLines["cellulare"].text()
             stato = self.qLines["stato"].text()
-
             amministratore.iscriviVolontario(cellulare, codice_fiscale, cognome, data_nascita, email, nome, password,
                                              idoneita118, stato)
         except:
