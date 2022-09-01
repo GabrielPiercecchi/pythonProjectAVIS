@@ -38,7 +38,7 @@ class VistaDonatori(QWidget):
         if os.path.isfile('Model/Donatori.pickle'):
             with open('Model/Donatori.pickle', 'rb') as f:
                 current = dict(pickle.load(f))
-                self.donatori.extend(current, values)
+                self.donatori.extend(current.values())
 
     def update_donatori(self):
         self.donatori = []
