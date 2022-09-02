@@ -34,8 +34,8 @@ class VistaVolontario(QWidget):
     def load_volontari(self):
         if os.path.isfile('Model/Volontari.pickle'):
             with open('Model/Volontari.pickle', 'rb') as f:
-                current = dict(pickle.load(f))
-                self.volontari.extend(current.values())
+                current = list(pickle.load(f))
+                self.volontari.extend(current)
 
     def update_volontari(self):
         self.volontari = []

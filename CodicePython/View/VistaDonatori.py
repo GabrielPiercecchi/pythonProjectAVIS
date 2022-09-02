@@ -33,11 +33,11 @@ class VistaDonatori(QWidget):
         self.resize(600, 300)
         self.setWindowTitle("Donatori")
 
-    def load_donatori(self):  ##RICONTROLLO
+    def load_donatori(self):  #RICONTROLLO
         if os.path.isfile('Model/Donatori.pickle'):
             with open('Model/Donatori.pickle', 'rb') as f:
-                current = dict(pickle.load(f))
-                self.donatori.extend(current.values())
+                current = list(pickle.load(f))
+                self.donatori.extend(current)
 
     def update_donatori(self):
         self.donatori = []
@@ -45,7 +45,7 @@ class VistaDonatori(QWidget):
         listview_model = QStandardItemModel(self.list_view)  #definisce come è fatta una riga
         for donatore in self.donatori:
             item = QStandardItem()
-            nome = f"{donatore.nome} {donatore.cognome} {donatore.codice_fiscale} {donatore.gruppo_sanguigno}"
+            nome = f"{donatore.nome} {donatore.cognome}"
             item.setText(nome)
             item.setEditable(False)
             font = item.font()
