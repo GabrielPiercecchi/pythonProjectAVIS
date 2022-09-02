@@ -28,8 +28,6 @@ class Amministratore(Utente):
         donatore = Donatore(cellulare, codice_fiscale, cognome, data_nascita, email, nome, password,
                             self.conta_tessere, gruppo_sanguigno, True)
 
-        ####PROBLEMA CON LA RICERCA DEL FILE
-
         if os.path.isfile('Model/Donatori.pickle'):
             with open('Model/Donatori.pickle', 'rb') as f:  # lettura
                 self.elenco_donatori = pickle.load(f)
