@@ -31,7 +31,7 @@ class VistaVisualizzaDonatore(QWidget):
         v_layout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
 
         btn_elimina = QPushButton('Elimina')
-        btn_elimina.clicked.connect(lambda: self.elimina_callback(donatore))
+        btn_elimina.clicked.connect(lambda: self.elimina_donatore_click(donatore))
         v_layout.addWidget(btn_elimina)
 
         self.setLayout(v_layout)

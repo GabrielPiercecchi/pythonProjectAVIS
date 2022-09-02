@@ -48,11 +48,12 @@ class Amministratore(Utente):
 
     def __eliminaDonatore__(self, codice_fiscale):
         if os.path.isfile('Model/Donatori.pickle'):
-            with open('Model/Donatori.pickle', 'wb+') as f:
+            with open('Model/Donatori.pickle', 'rb') as f:
                 donatori = list(pickle.load(f))
                 for donatore in donatori:
                     if donatore.codice_fiscale == codice_fiscale:
-                        donatori.pop(donatore)
+                        donatori.remove(donatore)
+            with open('Model/Donatori.pickle', 'wb') as f:
                 pickle.dump(donatori, f, pickle.HIGHEST_PROTOCOL)
 
     def __crea_tessera__(self, conta_tessere, nome, cognome):
