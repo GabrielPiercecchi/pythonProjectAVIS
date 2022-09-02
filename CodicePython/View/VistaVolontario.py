@@ -1,6 +1,8 @@
 import os
 import pickle
 
+from PyQt5.QtGui import QStandardItemModel, QStandardItem
+
 from CodicePython.View.LoginNuovoVolontario import LoginNuovoVolontario
 from PyQt5.QtWidgets import QWidget, QHBoxLayout, QListView, QVBoxLayout, QPushButton
 
@@ -33,10 +35,22 @@ class VistaVolontario(QWidget):
         if os.path.isfile('Model/Volontari.pickle'):
             with open('Model/Volontari.pickle', 'rb') as f:
                 current = dict(pickle.load(f))
-                self.volontari.extend(current, values())
+                self.volontari.extend(current.values())
 
     def update_volontari(self):
         self.volontari = []
+        self.load_volontari()
+        listview_model = QStandardItemModel(self.list_view)  # definisce come è fatta una riga
+        for volontario in self.volontari:
+            item = QStandardItem()
+            nome = f"{volontario.nome} {volontario.cognome} {volontario.codice_fiscale}"
+            item.setText(nome)
+            item.setEditable(False)
+            font = item.font()
+            font.setPointSize(18)
+            item.setFont(font)
+            listview_model.appendRow(item)
+        self.list_view.setModel(listview_model)
 
     def show_selected_info(self):
         pass
