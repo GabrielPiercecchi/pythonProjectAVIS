@@ -49,8 +49,8 @@ class Amministratore(Utente):
     def __eliminaDonatore__(self, codice_fiscale):
         if os.path.isfile('Model/Donatori.pickle'):
             with open('Model/Donatori.pickle', 'wb+') as f:
-                donatori = dict(pickle.load(f))
-                for donatore in donatori.values():
+                donatori = list(pickle.load(f))
+                for donatore in donatori:
                     if donatore.codice_fiscale == codice_fiscale:
                         donatori.pop(donatore)
                 pickle.dump(donatori, f, pickle.HIGHEST_PROTOCOL)
