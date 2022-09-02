@@ -10,9 +10,7 @@ class VistaVisualizzaDonatore(QWidget):
         v_layout = QVBoxLayout()
         codice_fiscale = ""
         info = {}
-        if isinstance(donatore, Donatore):
-            codice_fiscale = f"Donatore {donatore.codice_fiscale}"
-            info = donatore.__getInfoDonatore__()
+        codice_fiscale = f"{donatore.nome} {donatore.cognome}"
         label_codice_fiscale = QLabel(codice_fiscale)
         font_codice_fiscale = label_codice_fiscale.font()
         font_codice_fiscale.setPointSize(30)
@@ -21,14 +19,14 @@ class VistaVisualizzaDonatore(QWidget):
 
         v_layout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
 
-        v_layout.addWidget(QLabel(f"Nome: {info['nome']}"))
-        v_layout.addWidget(QLabel(f"Cognome: {info['cognome']}"))
-        v_layout.addWidget(QLabel(f"Codice fiscale: {info['codice_fiscale']}"))
-        v_layout.addWidget(QLabel(f"Gruppo sanguigno: {info['Gruppo sanguigno']}"))
-        v_layout.addWidget(QLabel(f"Data di nascita: {info['DataNascita']}"))
-        v_layout.addWidget(QLabel(f"Email: {info['email']}"))
-        v_layout.addWidget(QLabel(f"Cellulare: {info['cellulare']}"))
-        v_layout.addWidget(QLabel(f"Idoneita: {info['idoneita']}"))
+        v_layout.addWidget(QLabel(f"Nome: {donatore.nome}"))
+        v_layout.addWidget(QLabel(f"Cognome: {donatore.cognome}"))
+        v_layout.addWidget(QLabel(f"Codice fiscale: {donatore.codice_fiscale}"))
+        v_layout.addWidget(QLabel(f"Gruppo sanguigno: {donatore.gruppo_sanguigno}"))
+        v_layout.addWidget(QLabel(f"Data di nascita: {donatore.data_nascita}"))
+        v_layout.addWidget(QLabel(f"Email: {donatore.email}"))
+        v_layout.addWidget(QLabel(f"Cellulare: {donatore.cellulare}"))
+        v_layout.addWidget(QLabel(f"Idoneita: {donatore.idoneita}"))
 
         v_layout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
 

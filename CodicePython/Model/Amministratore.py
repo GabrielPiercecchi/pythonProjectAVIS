@@ -38,8 +38,8 @@ class Amministratore(Utente):
     def ricercaDonatore(self, codice_fiscale):
         if os.path.isfile('Model/Donatori.pickle'):
             with open('Model/Donatori.pickle', 'rb') as f:
-                donatori = dict(pickle.load(f))
-                for donatore in donatori.values():
+                donatori = list(pickle.load(f))
+                for donatore in donatori:
                     if donatore.codice_fiscale == codice_fiscale:
                         return donatore
                 return None

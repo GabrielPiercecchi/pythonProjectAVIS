@@ -26,15 +26,15 @@ class Donatore(Utente):
     def __setIdoneita__(self, idoneita):
         self.idoneita = idoneita
 
-    def __getInfoDonatore__(self):
+    def getInfoDonatore(self):
         return {
-            "Nome": self.getNome(),
-            "Cognome": self.getCognome(),
-            "Codice Fiscale": self.getCodice_fiscale(),
-            "Email": self.getEmail(),
-            "Cellulare": self.getCellulare(),
-            "Data di nascita": self.getData_nascita(),
-            "Password": self.getPassword(),
+            "Nome": self.nome,
+            "Cognome": self.cognome,
+            "Codice Fiscale": self.codice_fiscale,
+            "Email": self.email,
+            "Cellulare": self.cellulare,
+            "Data di nascita": self.data_nascita,
+            "Password": self.password,
             "Gruppo sanguigno": self.__getGruppo_sanguigno__(),
             "Idoneita": self.__getIdoneita__()
         }

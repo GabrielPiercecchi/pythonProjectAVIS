@@ -3,6 +3,7 @@ import pickle
 
 from CodicePython.Model.Amministratore import Amministratore
 from CodicePython.View.LoginNuovoDonatore import LoginNuovoDonatore
+from CodicePython.View.VistaVisualizzaDonatore import VistaVisualizzaDonatore
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
 from PyQt5.QtWidgets import QVBoxLayout, QLabel, QSpacerItem, QSizePolicy, QHBoxLayout, QListView, \
     QWidget, QPushButton
@@ -45,26 +46,25 @@ class VistaDonatori(QWidget):
         listview_model = QStandardItemModel(self.list_view)  #definisce come è fatta una riga
         for donatore in self.donatori:
             item = QStandardItem()
-            nome = f"{donatore.cognome} {donatore.nome}"
+            nome = f"{donatore.cognome} {donatore.nome} - {donatore.codice_fiscale}"
             item.setText(nome)
             item.setEditable(False)
             font = item.font()
-            font.setPointSize(18)
+            font.setPointSize(15)
             item.setFont(font)
             listview_model.appendRow(item)
         self.list_view.setModel(listview_model)
 
     def show_selected_info(self):
         amministratore = Amministratore(376, "AMMINISTRATORESTUPIDO", "Paniccia",
-                 25/12/2000, "osvaldopaniccia@boh.sium", "Osvaldo", "password")
+                                        2000 - 12 - 25, "osvaldopaniccia@boh.sium", "Osvaldo", "password")
         try:
             selected = self.list_view.selectedIndexes()[0].data()
-            tipo = selected.split("-")[1].strip().split(" ")[0]
-            codice_fiscale = selected.split("-")[1].strip().split(" ")[1]
-            donatore = None
-            if tipo == "Donatore":
-                donatore = amministratore.ricercaDonatore(donatore)
-            self.vista_donatore = VistaInserisciDonatore(donatore, elimina_callback = self.update_donatori)
+            selected = selected.split("-")[1].strip()
+            print(selected)
+            donatore = amministratore.ricercaDonatore(selected)
+            print (donatore.nome)
+            self.vista_donatore = VistaVisualizzaDonatore(donatore, elimina_callback=self.update_donatori)
             self.vista_donatore.show()
         except IndexError:
             print("INDEX ERROR")
