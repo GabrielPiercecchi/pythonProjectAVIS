@@ -45,7 +45,7 @@ class VistaDonatori(QWidget):
         listview_model = QStandardItemModel(self.list_view)  #definisce come è fatta una riga
         for donatore in self.donatori:
             item = QStandardItem()
-            nome = f"{donatore.nome} {donatore.cognome}"
+            nome = f"{donatore.cognome} {donatore.nome}"
             item.setText(nome)
             item.setEditable(False)
             font = item.font()
