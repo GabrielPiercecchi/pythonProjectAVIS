@@ -66,13 +66,13 @@ class VistaInserisciDonatore(QWidget):
             print(idoneita)
             password = self.qLines["password"].text()
             print(password)
-           # numtessera = 1
             amministratore.__iscriviDonatore__(nome, cognome, codice_fiscale, data_nascita, cellulare, email,
                                                password, gruppo_sanguigno, idoneita)
-            #amministratore.__crea_tessera__(numtessera, nome, cognome)
-            #donatore = Donatore(cellulare, codice_fiscale, cognome, data_nascita,
+            # numtessera = 1
+            # amministratore.__crea_tessera__(numtessera, nome, cognome)
+            # donatore = Donatore(cellulare, codice_fiscale, cognome, data_nascita,
             #     email, nome, password, numtessera, gruppo_sanguigno, idoneita)
-            #numtessera += 1
+            # numtessera += 1
         except:
             QMessageBox.critical(self, 'Errore', 'Controlla i dati inseriti', QMessageBox.Ok, QMessageBox.Ok)
             return
