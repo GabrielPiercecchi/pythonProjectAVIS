@@ -1,3 +1,4 @@
+from CodicePython.View.LoginAmministratore import LoginAmministratore
 from CodicePython.View.VistaAmministratore import VistaAmministratore
 from CodicePython.View.VistaDonatori import VistaDonatori
 
@@ -25,8 +26,8 @@ class VistaHome(QWidget):
         return button
 
     def go_amministratore(self):
-        self.vista_amministratore = VistaAmministratore()
-        self.vista_amministratore.show()
+        self.login = LoginAmministratore(callback=LoginAmministratore.log)
+        self.login.show()
 
     def go_donatori(self):
         self.vista_donatori = VistaDonatori()
