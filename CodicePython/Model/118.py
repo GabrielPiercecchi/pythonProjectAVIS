@@ -1,8 +1,9 @@
 from CodicePython.Model.Rapportino import Rapportino
 from CodicePython.Model.Emergenza import Emergenza
+import datetime
 
 
-class 118(Emergenza):
+class __118__(Emergenza):
 
     def __init__(self, spesa: int, stato: bool, tipo: ""):
         Emergenza.__init__(self, spesa, stato, tipo)
@@ -26,17 +27,17 @@ class 118(Emergenza):
         self.tipo = tipo
 
     def __verificaIdoneitaPersonale__(self, personale):
-        if personale.idoneita118 == True:
+        if personale.idoneita118:
             return True
         else:
             return False
 
     def __assegnaPersonale__(self, dipendente: Dipendente, volontario1: Volontario, volontario2: Volontario):
-        if self.__verificaIdoneitaPersonale__(dipendente) == True:
+        if self.__verificaIdoneitaPersonale__(dipendente):
             dipendente = Dipentente()
-        if self.__verificaIdoneitaPersonale__(volontario1) == True:
+        if self.__verificaIdoneitaPersonale__(volontario1):
             volontario1 = Volontario()
-        if self.__verificaIdoneitaPersonale__(volontario2) == True:
+        if self.__verificaIdoneitaPersonale__(volontario2):
             volontario2 = Volontario()
 
     def __assegnaRapportino__(self, data: datetime.datetime, inizio: int, fine: int):

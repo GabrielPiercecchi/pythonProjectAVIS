@@ -1,6 +1,7 @@
 from CodicePython.Model.Personale import Personale
 import datetime
 
+
 class Dipendente(Personale):
 
     def __init__(self, cellulare, codice_fiscale, cognome,
@@ -24,9 +25,9 @@ class Dipendente(Personale):
 
     # correggere argomenti metodo su enterprise
     def setinfoDipendente(self, cellulare: int, codice_fiscale: "", cognome: "",
-                 data_nascita: datetime.date, email: "", nome: "", password: "", idoneita118: bool,
-                 orario_lavorativo: datetime.date, stato: bool, turno: datetime.date, iban: ""):
+                          data_nascita: datetime.date, email: "", nome: "", password: "", idoneita118: bool,
+                          orario_lavorativo: datetime.date, stato: bool, turno: datetime.date, iban: ""):
         self.setinfoPersonale(cellulare, codice_fiscale, cognome,
-                 data_nascita, email, nome, password, idoneita118,
-                 orario_lavorativo, stato, turno)
+                              data_nascita, email, nome, password, idoneita118,
+                              orario_lavorativo, stato, turno)
         self.IBAN = iban

@@ -123,9 +123,11 @@ class Amministratore(Utente):
                 fp.write(str(donazione.year) + ' ' + str(donazione.month) + ' ' + str(donazione.day) + ' ' + str(
                     donazione.hour) + ' ' + str(donazione.minute) + ' ' + str(donazione.disponibile))
 
-    def iscriviDipendente(self, cellulare, codice_fiscale, cognome, data_nascita, email, nome, password, idoneita118, stato,
+    def iscriviDipendente(self, cellulare, codice_fiscale, cognome, data_nascita, email, nome, password, idoneita118,
+                          stato,
                           IBAN):
-        dipendente = Dipendente(cellulare, codice_fiscale, cognome, data_nascita, email, nome, password, idoneita118, stato, IBAN)
+        dipendente = Dipendente(cellulare, codice_fiscale, cognome, data_nascita, email, nome, password, idoneita118,
+                                stato, IBAN)
         if os.path.isfile('Model/Dipendenti.pickle'):
             with open('Model/Dipendenti.pickle', 'rb') as f:  # lettura
                 self.elenco_dipendenti = pickle.load(f)
@@ -154,9 +156,10 @@ class Amministratore(Utente):
             with open('Model/Dipendenti.pickle', 'wb') as f:
                 pickle.dump(dipendenti, f, pickle.HIGHEST_PROTOCOL)
 
-
-    def iscriviVolontario(self, cellulare, codice_fiscale, cognome, data_nascita, email, nome, password, idoneita118, stato):
-        volontario = Volontario(cellulare, codice_fiscale, cognome, data_nascita, email, nome, password, idoneita118, stato)
+    def iscriviVolontario(self, cellulare, codice_fiscale, cognome, data_nascita, email, nome, password, idoneita118,
+                          stato):
+        volontario = Volontario(cellulare, codice_fiscale, cognome, data_nascita, email, nome, password, idoneita118,
+                                stato)
         if os.path.isfile('Model/Volontari.pickle'):
             with open('Model/Volontari.pickle', 'rb') as f:
                 self.elenco_volontari = pickle.load(f)

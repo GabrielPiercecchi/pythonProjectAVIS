@@ -47,7 +47,7 @@ class Donatore(Utente):
                 donazione = Donazione(year, month, day, hour, minute, disponibile)  # aggiungere attributo???
                 donazioni.append(donazione)
             for donazione in donazioni:
-                if donazione.disponibile == True:
+                if donazione.disponibile:
                     disponibili.append(donazione)
                     with open('../Controller/disponibilita.txt', 'w') as fp:
                         for donazione in donazioni:
