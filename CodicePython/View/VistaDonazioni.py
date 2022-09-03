@@ -29,7 +29,7 @@ class VistaDonazioni(QWidget):
         self.resize(600, 300)
         self.setWindowTitle("Donazioni")
 
-    def load_donatori(self):  # RICONTROLLO
+    def load_donazioni(self):  # RICONTROLLO
             if os.path.isfile('Model/Donazioni.pickle'):
                 with open('Model/Donazioni.pickle', 'rb') as f:
                     current = list(pickle.load(f))
@@ -41,7 +41,7 @@ class VistaDonazioni(QWidget):
         listview_model = QStandardItemModel(self.list_view)  # definisce come è fatta una riga
         for donazione in self.donazioni:
             item = QStandardItem()
-            nome = f"{donazione.day} ' ' {donazione.hour} : {donazione.minute} - {donazione.id_donazione}"
+            nome = f"{donazione.day} / {donazione.month} / {donazione.year} ' ' {donazione.hour} : {donazione.minute} - {donazione.id_donazione}"
             item.setText(nome)
             item.setEditable(False)
             font = item.font()
