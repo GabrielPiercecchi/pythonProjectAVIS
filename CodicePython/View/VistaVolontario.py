@@ -45,7 +45,7 @@ class VistaVolontario(QWidget):
         listview_model = QStandardItemModel(self.list_view)  # definisce come è fatta una riga
         for volontario in self.volontari:
             item = QStandardItem()
-            nome = f"{volontario.nome} {volontario.cognome} - {volontario.codice_fiscale}"
+            nome = f"{volontario.cognome} {volontario.nome} - {volontario.codice_fiscale}"
             item.setText(nome)
             item.setEditable(False)
             font = item.font()

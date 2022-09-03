@@ -45,7 +45,7 @@ class VistaDipendente(QWidget):
         listview_model = QStandardItemModel(self.list_view)  # definisce come è fatta una riga
         for dipendente in self.dipendenti:
             item = QStandardItem()
-            nome = f"{dipendente.nome} {dipendente.cognome} - {dipendente.codice_fiscale}"
+            nome = f"{dipendente.cognome} {dipendente.nome} - {dipendente.codice_fiscale}"
             item.setText(nome)
             item.setEditable(False)
             font = item.font()
