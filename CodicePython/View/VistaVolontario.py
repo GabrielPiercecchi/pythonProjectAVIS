@@ -1,6 +1,8 @@
 import os
 import pickle
 
+from CodicePython.Model.Amministratore import Amministratore
+from CodicePython.View.VistaVisualizzaVolontario import VistaVisualizzaVolontario
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
 
 from CodicePython.View.LoginNuovoVolontario import LoginNuovoVolontario
@@ -43,17 +45,29 @@ class VistaVolontario(QWidget):
         listview_model = QStandardItemModel(self.list_view)  # definisce come è fatta una riga
         for volontario in self.volontari:
             item = QStandardItem()
-            nome = f"{volontario.nome} {volontario.cognome} {volontario.codice_fiscale}"
+            nome = f"{volontario.nome} {volontario.cognome} - {volontario.codice_fiscale}"
             item.setText(nome)
             item.setEditable(False)
             font = item.font()
-            font.setPointSize(18)
+            font.setPointSize(15)
             item.setFont(font)
             listview_model.appendRow(item)
         self.list_view.setModel(listview_model)
 
     def show_selected_info(self):
-        pass
+        amministratore = Amministratore(376, "AMMINISTRATORESTUPIDO", "Paniccia",
+                                        2000 - 12 - 25, "osvaldopaniccia@boh.sium", "Osvaldo", "password")
+        try:
+            selected = self.list_view.selectedIndexes()[0].data()
+            selected = selected.split("-")[1].strip()
+            print(selected)
+            volontario = amministratore.ricercaVolontario(selected)
+            print(volontario.nome)
+            self.vista_volontario = VistaVisualizzaVolontario(volontario, elimina_callback=self.update_volontari)
+            self.vista_volontario.show()
+        except IndexError:
+            print("INDEX ERROR")
+            return
 
     def show_new(self):
         self.login = LoginNuovoVolontario(callback=LoginNuovoVolontario.log)

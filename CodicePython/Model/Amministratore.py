@@ -164,21 +164,22 @@ class Amministratore(Utente):
     def ricercaVolontario(self, codice_fiscale=""):
         if os.path.isfile('Model/Volontari.pickle'):
             with open('Model/Volontari.pickle', 'rb') as f:
-                volontari = dict(pickle.load(f))
-                for volontario in volontari.values():
+                volontari = list(pickle.load(f))
+                for volontario in volontari:
                     if volontario.codice_fiscale == codice_fiscale:
                         return volontario
                 return None
         else:
             return None
 
-    def eliminaVolontario(self, codice_fiscale=""):
+    def eliminaVolontario(self, codice_fiscale):
         if os.path.isfile('Model/Volontari.pickle'):
-            with open('Model/Volontari.pickle', 'wb+') as f:
-                volontari = dict(pickle.load(f))
-                for volontario in volontari.values():
+            with open('Model/Volontari.pickle', 'rb') as f:
+                volontari = list(pickle.load(f))
+                for volontario in volontari:
                     if volontario.codice_fiscale == codice_fiscale:
-                        volontari.pop(volontario)
+                        volontari.remove(volontario)
+            with open('Model/Volontari.pickle', 'wb') as f:
                 pickle.dump(volontari, f, pickle.HIGHEST_PROTOCOL)
 
     def visualizzaRapporti(self, data):
