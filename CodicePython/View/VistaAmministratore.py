@@ -1,3 +1,6 @@
+from CodicePython.View.VistaDonazioni import VistaDonazioni
+from CodicePython.View.VistaPagamenti import VistaPagamenti
+from CodicePython.View.VistaRapportini import VistaRapportini
 from PyQt5.QtWidgets import QWidget, QGridLayout, QSizePolicy, QPushButton
 
 
@@ -20,13 +23,16 @@ class VistaAmministratore(QWidget):
         return button
 
     def go_handle_donazioni(self):
-        pass
+        self.vista_donazioni = VistaDonazioni()
+        self.vista_donazioni.show()
 
     def go_handle_rapportini(self):
-        pass
+        self.vista_rapportini = VistaRapportini()
+        self.vista_rapportini.show()
 
     def go_handle_payments(self):
-        pass
+        self.vista_pagamenti = VistaPagamenti()
+        self.vista_pagamenti.show()
 
     def go_turni(self):
         pass
