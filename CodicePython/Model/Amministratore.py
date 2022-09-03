@@ -17,14 +17,14 @@ class Amministratore(Utente):
     conta_tessere = 1
 
     def __init__(self, cellulare, codice_fiscale, cognome,
-                 data_nascita: datetime.date, email, nome, password):
+                 data_nascita, email, nome, password):
         Utente.__init__(self, cellulare, codice_fiscale, cognome,
                         data_nascita, email, nome, password)
         self.elenco_donatori = []
         self.elenco_volontari = []
         self.elenco_dipendenti = []
 
-    def __iscriviDonatore__(self, nome, cognome, codice_fiscale, data_nascita: datetime.date, cellulare, email,
+    def __iscriviDonatore__(self, nome, cognome, codice_fiscale, data_nascita, cellulare, email,
                             password, gruppo_sanguigno, idoneita=True):
         donatore = Donatore(cellulare, codice_fiscale, cognome, data_nascita, email, nome, password,
                             self.conta_tessere, gruppo_sanguigno, True)
@@ -78,7 +78,7 @@ class Amministratore(Utente):
         else:
             return None
 
-    def __eliminaTessera__(self, numero: int):
+    def __eliminaTessera__(self, numero):
         if os.path.isfile('Model/Tessera.pickle'):
             with open('Model/Tessera.pickle', 'wb+') as f:
                 tessere = dict(pickle.load(f))
@@ -94,8 +94,8 @@ class Amministratore(Utente):
                 orario.append(line)
         return orario
 
-    def __modificaStatoDonazione__(self, anno: int, mese: int, giorno: int, ora: int, minuto: int,
-                                   donatore: int):  # DA FARE!!!
+    def __modificaStatoDonazione__(self, anno, mese, giorno, ora, minuto,
+                                   donatore):  # DA FARE!!!
         donazioni = []
         with open('../orari.txt', 'r') as fp:
             for line in fp:
@@ -164,7 +164,7 @@ class Amministratore(Utente):
         with open('Model/Volontari.pickle', 'wb') as f:
             pickle.dump(self.elenco_volontari, f, pickle.HIGHEST_PROTOCOL)
 
-    def ricercaVolontario(self, codice_fiscale=""):
+    def ricercaVolontario(self, codice_fiscale):
         if os.path.isfile('Model/Volontari.pickle'):
             with open('Model/Volontari.pickle', 'rb') as f:
                 volontari = list(pickle.load(f))
