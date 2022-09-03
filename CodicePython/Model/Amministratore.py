@@ -22,6 +22,7 @@ class Amministratore(Utente):
                         data_nascita, email, nome, password)
         self.elenco_donatori = []
         self.elenco_volontari = []
+        self.elenco_dipendenti = []
 
     def __iscriviDonatore__(self, nome, cognome, codice_fiscale, data_nascita: datetime.date, cellulare, email,
                             password, gruppo_sanguigno, idoneita=True):
@@ -122,35 +123,37 @@ class Amministratore(Utente):
                 fp.write(str(donazione.year) + ' ' + str(donazione.month) + ' ' + str(donazione.day) + ' ' + str(
                     donazione.hour) + ' ' + str(donazione.minute) + ' ' + str(donazione.disponibile))
 
-    def iscriviDipendente(self, nome, cognome, codice_fiscale, data_nascita, cellulare, email, password,
+    def iscriviDipendente(self, cellulare, codice_fiscale, cognome, data_nascita, email, nome, password, idoneita118, stato,
                           IBAN):
-        dipendente = Dipendente(nome, cognome, codice_fiscale, data_nascita, cellulare, email, password, IBAN)
+        dipendente = Dipendente(cellulare, codice_fiscale, cognome, data_nascita, email, nome, password, idoneita118, stato, IBAN)
         if os.path.isfile('Model/Dipendenti.pickle'):
             with open('Model/Dipendenti.pickle', 'rb') as f:  # lettura
-                dipendenti = pickle.load(f)
-        dipendenti.append(dipendente)
+                self.elenco_dipendenti = pickle.load(f)
+        self.elenco_dipendenti.append(dipendente)
         with open('Model/Dipendenti.pickle', 'wb') as f:
-            pickle.dump(dipendenti, f, pickle.HIGHEST_PROTOCOL)
+            pickle.dump(self.elenco_dipendenti, f, pickle.HIGHEST_PROTOCOL)
 
-    def ricercaDipendente(self, codice_fiscale=""):
+    def ricercaDipendente(self, codice_fiscale):
         if os.path.isfile('Model/Dipendenti.pickle'):
             with open('Model/Dipendenti.pickle', 'rb') as f:
-                dipendenti = dict(pickle.load(f))
-                for dipendente in dipendenti.values():
+                dipendenti = list(pickle.load(f))
+                for dipendente in dipendenti:
                     if dipendente.codice_fiscale == codice_fiscale:
                         return dipendente
                 return None
         else:
             return None
 
-    def eliminaDipendente(self, codice_fiscale=""):
+    def eliminaDipendente(self, codice_fiscale):
         if os.path.isfile('Model/Dipendenti.pickle'):
-            with open('Model/Dipendenti.pickle', 'wb+') as f:
-                dipendenti = dict(pickle.load(f))
-                for dipendente in dipendenti.values():
+            with open('Model/Dipendenti.pickle', 'rb') as f:
+                dipendenti = list(pickle.load(f))
+                for dipendente in dipendenti:
                     if dipendente.codice_fiscale == codice_fiscale:
-                        dipendenti.pop(dipendente)
+                        dipendenti.remove(dipendente)
+            with open('Model/Dipendenti.pickle', 'wb') as f:
                 pickle.dump(dipendenti, f, pickle.HIGHEST_PROTOCOL)
+
 
     def iscriviVolontario(self, cellulare, codice_fiscale, cognome, data_nascita, email, nome, password, idoneita118, stato):
         volontario = Volontario(cellulare, codice_fiscale, cognome, data_nascita, email, nome, password, idoneita118, stato)

@@ -9,8 +9,6 @@ class VistaVisualizzaVolontario(QWidget):
         self.elimina_callback = elimina_callback
 
         v_layout = QVBoxLayout()
-        codice_fiscale = ""
-        info = {}
         codice_fiscale = f"{volontario.nome} {volontario.cognome}"
         label_codice_fiscale = QLabel(codice_fiscale)
         font_codice_fiscale = label_codice_fiscale.font()

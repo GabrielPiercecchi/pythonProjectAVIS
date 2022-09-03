@@ -3,11 +3,10 @@ import datetime
 
 class Dipendente(Personale):
 
-    def __init__(self, cellulare: int, codice_fiscale: "", cognome: "",
-                 data_nascita: datetime.date, email: "", nome: "", password: "", idoneita118: bool,
-                 orario_lavorativo: datetime.date, stato: bool, turno: datetime.date, IBAN: ""):
-        super().__init__(cellulare, codice_fiscale, cognome, data_nascita, email, nome, password, idoneita118,
-                 orario_lavorativo, stato, turno)
+    def __init__(self, cellulare, codice_fiscale, cognome,
+                 data_nascita, email, nome, password, idoneita118, stato, IBAN):
+        Personale.__init__(self, cellulare, codice_fiscale, cognome, data_nascita, email, nome, password, idoneita118,
+                           stato)
         self.IBAN = IBAN
 
     def getIBAN(self):

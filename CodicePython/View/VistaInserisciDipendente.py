@@ -1,14 +1,13 @@
 from datetime import datetime
 
 from CodicePython.Model.Amministratore import Amministratore
-from CodicePython.Model.Volontario import Volontario
-from PyQt5.QtWidgets import QWidget, QVBoxLayout, QLabel, QLineEdit, QPushButton, QMessageBox
+from PyQt5.QtWidgets import QVBoxLayout, QPushButton, QLabel, QLineEdit, QMessageBox, QWidget
 
 
-class VistaInserisciVolontario(QWidget):
+class VistaInserisciDipendente(QWidget):
 
     def __init__(self, callback):
-        super(VistaInserisciVolontario, self).__init__()
+        super(VistaInserisciDipendente, self).__init__()
         self.callback = callback
         self.v_layout = QVBoxLayout()
         self.qLines = {}
@@ -21,14 +20,15 @@ class VistaInserisciVolontario(QWidget):
         self.add_info_text("cellulare", "Cellulare")
         self.add_info_text("password", "Password")
         self.add_info_text("stato", "Stato")
+        self.add_info_text("iban", "IBAN")
 
         btn_ok = QPushButton("Ok")
-        btn_ok.clicked.connect(self.aggiungi_volontario)
+        btn_ok.clicked.connect(self.aggiungi_dipendente)
         self.qLines["btn_ok"] = btn_ok
         self.v_layout.addWidget(btn_ok)
 
         self.setLayout(self.v_layout)
-        self.setWindowTitle("Nuovo volontario")
+        self.setWindowTitle("Nuovo dipendente")
 
     def add_info_text(self, nome, label):
         self.v_layout.addWidget(QLabel(label))
@@ -36,7 +36,7 @@ class VistaInserisciVolontario(QWidget):
         self.qLines[nome] = current_text
         self.v_layout.addWidget(current_text)
 
-    def aggiungi_volontario(self):  # problema Amministratore !!!!!
+    def aggiungi_dipendente(self):  # problema Amministratore !!!!!
         # se serve, aggiungere un try catch. In questo caso no poiche il CF può essere una stringa
         for value in self.qLines.values():
             if isinstance(value, QLineEdit):
@@ -64,12 +64,14 @@ class VistaInserisciVolontario(QWidget):
             cellulare = self.qLines["cellulare"].text()
             print(cellulare)
             stato = self.qLines["stato"].text()
-            print(stato)
-            amministratore.iscriviVolontario(cellulare, codice_fiscale, cognome, data_nascita, email, nome, password,
-                                             idoneita118, stato)
+            iban = self.qLines["iban"].text()
+            print(iban)
+            amministratore.iscriviDipendente(cellulare, codice_fiscale, cognome, data_nascita, email, nome, password,
+                                             idoneita118, stato, iban)
+            print("done")
         except Exception as e:
             print(e)
             QMessageBox.critical(self, 'Errore', 'Controlla i dati inseriti', QMessageBox.Ok, QMessageBox.Ok)
             return
-        #self.callback()
+        # self.callback()
         self.close()

@@ -1,3 +1,4 @@
+from CodicePython.View.VistaDipendente import VistaDipendente
 from CodicePython.View.VistaVolontario import VistaVolontario
 from PyQt5.QtWidgets import QWidget, QGridLayout, QPushButton, QSizePolicy
 
@@ -23,4 +24,5 @@ class VistaPersonale(QWidget):
         self.vista_volontario.show()
 
     def go_dipendente(self):
-        pass
+        self.vista_dipendente = VistaDipendente()
+        self.vista_dipendente.show()
