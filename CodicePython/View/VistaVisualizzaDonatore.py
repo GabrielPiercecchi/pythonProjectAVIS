@@ -39,7 +39,7 @@ class VistaVisualizzaDonatore(QWidget):
         amministratore = Amministratore(376, "AMMINISTRATORESTUPIDO", "Paniccia",
                                         2000 - 12 - 25, "osvaldopaniccia@boh.sium", "Osvaldo", "password")
         if isinstance(donatore, Donatore):
-            amministratore.__eliminaDonatore__(donatore.codice_fiscale)
+            amministratore.eliminaDonatore(donatore.codice_fiscale)
         self.elimina_callback()
         self.close()
 

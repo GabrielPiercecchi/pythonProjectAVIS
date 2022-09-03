@@ -47,7 +47,7 @@ class Amministratore(Utente):
         else:
             return None
 
-    def __eliminaDonatore__(self, codice_fiscale):
+    def eliminaDonatore(self, codice_fiscale):
         if os.path.isfile('Model/Donatori.pickle'):
             with open('Model/Donatori.pickle', 'rb') as f:
                 donatori = list(pickle.load(f))
@@ -57,7 +57,7 @@ class Amministratore(Utente):
             with open('Model/Donatori.pickle', 'wb') as f:
                 pickle.dump(donatori, f, pickle.HIGHEST_PROTOCOL)
 
-    def __crea_tessera__(self, conta_tessere, nome, cognome):
+    def crea_tessera(self, conta_tessere, nome, cognome):
         tessera = Tessera(conta_tessere, nome, cognome, donazioni=[], numero_donazioni=0)
         if os.path.isfile('Model/Tessere.pickle'):
             with open('Model/Tessere.pickle', 'rb') as f:  # lettura
@@ -67,7 +67,7 @@ class Amministratore(Utente):
             pickle.dump(tessere, f, pickle.HIGHEST_PROTOCOL)
         conta_tessere += 1
 
-    def __ricercaTessera__(self, numero):
+    def ricercaTessera(self, numero):
         if os.path.isfile('Model/Tessere.pickle'):
             with open('Model/Tessere.pickle', 'rb') as f:
                 tessere = dict(pickle.load(f))
@@ -78,7 +78,7 @@ class Amministratore(Utente):
         else:
             return None
 
-    def __eliminaTessera__(self, numero):
+    def eliminaTessera(self, numero):
         if os.path.isfile('Model/Tessera.pickle'):
             with open('Model/Tessera.pickle', 'wb+') as f:
                 tessere = dict(pickle.load(f))
@@ -87,14 +87,14 @@ class Amministratore(Utente):
                         tessere.pop(tessera)
                 pickle.dump(tessere, f, pickle.HIGHEST_PROTOCOL)
 
-    def __visualizzaDisponibilita__(self):
+    def visualizzaDisponibilita(self):
         orario = []
         with open('../orari.txt', 'r') as fp:
             for line in fp:
                 orario.append(line)
         return orario
 
-    def __modificaStatoDonazione__(self, anno, mese, giorno, ora, minuto,
+    def modificaStatoDonazione(self, anno, mese, giorno, ora, minuto,
                                    donatore):  # DA FARE!!!
         donazioni = []
         with open('../orari.txt', 'r') as fp:
