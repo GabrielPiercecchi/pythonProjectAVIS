@@ -1,4 +1,5 @@
 from CodicePython.Model.Donatore import Donatore
+from CodicePython.View.VistaTessera import VistaTessera
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QLabel, QSpacerItem, QSizePolicy, QPushButton
 from CodicePython.Model.Amministratore import Amministratore
 
@@ -33,7 +34,7 @@ class VistaVisualizzaDonatore(QWidget):
         v_layout.addWidget(btn_elimina)
 
         btn_tessera = QPushButton('Tessera')
-        btn_tessera.clicked.connect(lambda: self.visualizza_tessera(donatore))
+        btn_tessera.clicked.connect(lambda: self.visualizza_tessera(donatore.numtessera))
         v_layout.addWidget(btn_tessera)
 
         self.setLayout(v_layout)
@@ -47,12 +48,13 @@ class VistaVisualizzaDonatore(QWidget):
         self.elimina_callback()
         self.close()
 
-    def visualizza_tessera(self, donatore):
+    def visualizza_tessera(self, num):
         amministratore = Amministratore(376, "AMMINISTRATORESTUPIDO", "Paniccia",
                                         2000 - 12 - 25, "osvaldopaniccia@boh.sium", "Osvaldo", "password")
-        if isinstance(donatore, Donatore):
-            amministratore.ricercaTessera(donatore.numtessera)
-
-
-
+        try:
+            self.vista_tessera = VistaTessera(num)
+            self.vista_tessera.show()
+        except IndexError:
+            print("INDEX ERROR")
+            return
 
