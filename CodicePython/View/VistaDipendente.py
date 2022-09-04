@@ -3,6 +3,7 @@ import pickle
 
 from CodicePython.Model.Amministratore import Amministratore
 from CodicePython.View.LoginNuovoDipendente import LoginNuovoDipendente
+from CodicePython.View.LoginRapportiniDipendenti import LoginRapportiniDipendenti
 from CodicePython.View.VistaVisualizzaDipendente import VistaVisualizzaDipendente
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
 
@@ -26,6 +27,12 @@ class VistaDipendente(QWidget):
         new_button = QPushButton('Nuovo')
         new_button.clicked.connect(self.show_new)
         buttons_layout.addWidget(new_button)
+        buttons_layout.addStretch()
+        h_layout.addLayout(buttons_layout)
+
+        rapportini_button = QPushButton('Rapportini')
+        rapportini_button.clicked.connect(self.show_new_rapportini)
+        buttons_layout.addWidget(rapportini_button)
         buttons_layout.addStretch()
         h_layout.addLayout(buttons_layout)
 
@@ -70,4 +77,8 @@ class VistaDipendente(QWidget):
 
     def show_new(self):
         self.login = LoginNuovoDipendente(callback=LoginNuovoDipendente.log)
+        self.login.show()
+
+    def show_new_rapportini(self):
+        self.login = LoginRapportiniDipendenti(callback=LoginRapportiniDipendenti.log)
         self.login.show()

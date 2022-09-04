@@ -2,6 +2,7 @@ import os
 import pickle
 
 from CodicePython.Model.Amministratore import Amministratore
+from CodicePython.View.LoginRapportiniVolontari import LoginRapportiniVolontari
 from CodicePython.View.VistaVisualizzaVolontario import VistaVisualizzaVolontario
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
 
@@ -26,6 +27,12 @@ class VistaVolontario(QWidget):
         new_button = QPushButton('Nuovo')
         new_button.clicked.connect(self.show_new)
         buttons_layout.addWidget(new_button)
+        buttons_layout.addStretch()
+        h_layout.addLayout(buttons_layout)
+
+        rapportini_button = QPushButton('Rapportini')
+        rapportini_button.clicked.connect(self.show_new_rapportini)
+        buttons_layout.addWidget(rapportini_button)
         buttons_layout.addStretch()
         h_layout.addLayout(buttons_layout)
 
@@ -71,4 +78,8 @@ class VistaVolontario(QWidget):
 
     def show_new(self):
         self.login = LoginNuovoVolontario(callback=LoginNuovoVolontario.log)
+        self.login.show()
+
+    def show_new_rapportini(self):
+        self.login = LoginRapportiniVolontari(callback=LoginRapportiniVolontari.log)
         self.login.show()
