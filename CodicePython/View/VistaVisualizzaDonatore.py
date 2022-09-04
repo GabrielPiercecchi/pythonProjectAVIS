@@ -32,6 +32,10 @@ class VistaVisualizzaDonatore(QWidget):
         btn_elimina.clicked.connect(lambda: self.elimina_donatore_click(donatore))
         v_layout.addWidget(btn_elimina)
 
+        btn_tessera = QPushButton('Tessera')
+        btn_tessera.clicked.connect(lambda: self.visualizza_tessera(donatore))
+        v_layout.addWidget(btn_tessera)
+
         self.setLayout(v_layout)
         self.setWindowTitle("Donatore")
 
@@ -43,8 +47,11 @@ class VistaVisualizzaDonatore(QWidget):
         self.elimina_callback()
         self.close()
 
-
-
+    def visualizza_tessera(self, donatore):
+        amministratore = Amministratore(376, "AMMINISTRATORESTUPIDO", "Paniccia",
+                                        2000 - 12 - 25, "osvaldopaniccia@boh.sium", "Osvaldo", "password")
+        if isinstance(donatore, Donatore):
+            amministratore.ricercaTessera(donatore.numtessera)
 
 
 
