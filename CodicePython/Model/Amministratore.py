@@ -24,7 +24,7 @@ class Amministratore(Utente):
         self.elenco_volontari = []
         self.elenco_dipendenti = []
 
-    def __iscriviDonatore__(self, nome, cognome, codice_fiscale, data_nascita, cellulare, email,
+    def iscriviDonatore(self, nome, cognome, codice_fiscale, data_nascita, cellulare, email,
                             password, gruppo_sanguigno, idoneita=True):
         donatore = Donatore(cellulare, codice_fiscale, cognome, data_nascita, email, nome, password,
                             self.conta_tessere, gruppo_sanguigno, True)
