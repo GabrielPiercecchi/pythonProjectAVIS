@@ -50,12 +50,12 @@ class Personale(Utente):
     def setTurno(self, turno: datetime.date):
         self.turno = turno
 
-    def __inserisciRapportino__(self, data, KM_inizio, KM_fine):
+    def inserisciRapportino(self, data, KM_inizio, KM_fine):
         rapportino = Rapportino(data, KM_inizio, KM_fine)
         if os.path.isfile('Model/Rapportini.pickle'):
             with open('Model/Rapportini.pickle', 'rb') as f:  # lettura
-                rapportini = pickle.load(f)
-        rapportini.append(rapportino)
+                self.lista_rapportini = pickle.load(f)
+        self.lista_rapportini.append(rapportino)
         with open('Model/Rapportino.pickle', 'wb') as f:
-            pickle.dump(rapportini, f, pickle.HIGHEST_PROTOCOL)
+            pickle.dump(self.lista_rapportini, f, pickle.HIGHEST_PROTOCOL)
         return True
