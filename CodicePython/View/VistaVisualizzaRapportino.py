@@ -2,17 +2,17 @@ from PyQt5.QtWidgets import QWidget, QVBoxLayout, QLabel, QSpacerItem, QSizePoli
 
 
 class VistaVisualizzaRapportino(QWidget):
-    def __init__(self, rapportino, elimina_callback): #gestione visualizza ed elimina donatore
+    def __init__(self, rapportino, elimina_callback):
         super(VistaVisualizzaRapportino, self).__init__()
         self.elimina_callback = elimina_callback
 
         v_layout = QVBoxLayout()
-        codice_fiscale = f"{rapportino.data_servizio}"
-        label_codice_fiscale = QLabel(codice_fiscale)
-        font_codice_fiscale = label_codice_fiscale.font()
-        font_codice_fiscale.setPointSize(30)
-        label_codice_fiscale.setFont(font_codice_fiscale)
-        v_layout.addWidget(label_codice_fiscale)
+        giorno = f"{rapportino.data_servizio}"
+        label_giorno = QLabel(giorno)
+        font_giorno = label_giorno.font()
+        font_giorno.setPointSize(30)
+        label_giorno.setFont(font_giorno)
+        v_layout.addWidget(label_giorno)
 
         v_layout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
 

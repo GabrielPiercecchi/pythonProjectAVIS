@@ -42,7 +42,7 @@ class VistaRapportini(QWidget):
         listview_model = QStandardItemModel(self.list_view)  # definisce come è fatta una riga
         for rapportino in self.rapportini:
             item = QStandardItem()
-            nome = f"{rapportino.KM_inizio} {rapportino.KM_fine} - {rapportino.data_servizio}"
+            nome = f"{rapportino.data_servizio}"
             item.setText(nome)
             item.setEditable(False)
             font = item.font()
@@ -56,7 +56,6 @@ class VistaRapportini(QWidget):
                                         2000 - 12 - 25, "osvaldopaniccia@boh.sium", "Osvaldo", "password")
         try:
             selected = self.list_view.selectedIndexes()[0].data()
-            selected = selected.split("-")[1].strip()
             print(selected)
             rapportino = amministratore.visualizzaRapportini(selected)
             self.vista_rapportino = VistaVisualizzaRapportino(rapportino, elimina_callback=self.update_rapportini)
