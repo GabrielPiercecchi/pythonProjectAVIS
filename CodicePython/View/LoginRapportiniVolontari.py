@@ -1,3 +1,6 @@
+import os
+import pickle
+
 from CodicePython.View.VistaInserisciRapportini import VistaInserisciRapportini
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton, QLabel, QLineEdit, QMessageBox
 
@@ -26,10 +29,17 @@ class LoginRapportiniVolontari(QWidget):
     def log(self):
         username = self.qLines["username"].text()
         password = self.qLines["password"].text()
-        print(username)
-        if username == "username" and password == "password":
-            self.inserisci_rapportino = VistaInserisciRapportini(callback=VistaInserisciRapportini.aggiungi_rapportino)
-            self.inserisci_rapportino.show()
-        else:
-            QMessageBox.critical(self, 'Errore', 'Username e/o password errati', QMessageBox.Ok, QMessageBox.Ok)
-            return
+        self.elenco_volontari = []
+        if os.path.isfile('Model/Volontari.pickle'):
+            with open('Model/Volontari.pickle', 'rb') as f:
+                current = list(pickle.load(f))
+                self.elenco_volontari.extend(current)
+        print(self.elenco_volontari)
+        for volontario in self.elenco_volontari:
+            print(volontario.codice_fiscale)
+            print(volontario.password)
+            if username == volontario.codice_fiscale and password == volontario.password:
+                self.inserisci_rapportino = VistaInserisciRapportini(callback=VistaInserisciRapportini.aggiungi_rapportino)
+                self.inserisci_rapportino.show()
+                return
+        QMessageBox.critical(self, 'Errore', 'Username e/o password errati', QMessageBox.Ok, QMessageBox.Ok)
