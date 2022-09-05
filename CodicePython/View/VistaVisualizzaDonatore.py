@@ -34,7 +34,7 @@ class VistaVisualizzaDonatore(QWidget):
         v_layout.addWidget(btn_elimina)
 
         btn_tessera = QPushButton('Tessera')
-        btn_tessera.clicked.connect(lambda: self.visualizza_tessera(donatore.numtessera))
+        btn_tessera.clicked.connect(lambda: self.visualizza_tessera(donatore))
         v_layout.addWidget(btn_tessera)
 
         self.setLayout(v_layout)
@@ -48,11 +48,11 @@ class VistaVisualizzaDonatore(QWidget):
         self.elimina_callback()
         self.close()
 
-    def visualizza_tessera(self, num):
+    def visualizza_tessera(self, donatore):
         amministratore = Amministratore(376, "AMMINISTRATORESTUPIDO", "Paniccia",
                                         2000 - 12 - 25, "osvaldopaniccia@boh.sium", "Osvaldo", "password")
         try:
-            self.vista_tessera = VistaTessera(num)
+            self.vista_tessera = VistaTessera(donatore)
             self.vista_tessera.show()
         except IndexError:
             print("INDEX ERROR")
