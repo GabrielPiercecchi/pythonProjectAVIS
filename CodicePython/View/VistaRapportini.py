@@ -28,15 +28,17 @@ class VistaRapportini(QWidget):
         self.resize(600, 300)
         self.setWindowTitle("Rapportini")
 
-    def load_rapportini(self):  # RICONTROLLO
-        if os.path.isfile('Model/Rapportini.pickle'):
-            with open('Model/Rapportini.pickle', 'rb') as f:
-                current = list(pickle.load(f))
-                self.rapportini.extend(current)
+    def load_rapportini(self):
+        if os.path.isfile('Model/Rapportino.pickle'):
+            with open('Model/Rapportino.pickle', 'rb') as f:
+                self.rapportini = list(pickle.load(f))
+       #         current = list(pickle.load(f))
+        #        self.rapportini.extend(current)
 
     def update_rapportini(self):
         self.rapportini = []
         self.load_rapportini()
+        print(self.rapportini)
         listview_model = QStandardItemModel(self.list_view)  # definisce come è fatta una riga
         for rapportino in self.rapportini:
             item = QStandardItem()
