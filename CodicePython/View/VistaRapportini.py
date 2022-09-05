@@ -57,8 +57,9 @@ class VistaRapportini(QWidget):
         try:
             selected = self.list_view.selectedIndexes()[0].data()
             print(selected)
-            rapportino = amministratore.visualizzaRapportini(selected)
-            self.vista_rapportino = VistaVisualizzaRapportino(rapportino, elimina_callback=self.update_rapportini)
+            rapportino = amministratore.visualizzaRapportini(selected)  #non returna niente
+            print(rapportino)
+            self.vista_rapportino = VistaVisualizzaRapportino(rapportino)
             self.vista_rapportino.show()
         except IndexError:
             print("INDEX ERROR")

@@ -2,9 +2,8 @@ from PyQt5.QtWidgets import QWidget, QVBoxLayout, QLabel, QSpacerItem, QSizePoli
 
 
 class VistaVisualizzaRapportino(QWidget):
-    def __init__(self, rapportino, elimina_callback):
+    def __init__(self, rapportino):
         super(VistaVisualizzaRapportino, self).__init__()
-        self.elimina_callback = elimina_callback
 
         v_layout = QVBoxLayout()
         giorno = f"{rapportino.data_servizio}"

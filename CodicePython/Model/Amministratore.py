@@ -189,12 +189,12 @@ class Amministratore(Utente):
                 pickle.dump(volontari, f, pickle.HIGHEST_PROTOCOL)
 
     def visualizzaRapportini(self, data):
-        if os.path.isfile('Model/Rapportini.pickle'):
-            with open('Model/Rapportini.pickle', 'rb') as f:
+        if os.path.isfile('Model/Rapportino.pickle'):
+            with open('Model/Rapportino.pickle', 'rb') as f:
                 rapportini = list(pickle.load(f))
                 for rapportino in rapportini:
-                    if rapportino.data_servizio == data:
-                        return data
+                    if str(rapportino.data_servizio) == data:
+                        return rapportino
                 return None
         else:
             return None
