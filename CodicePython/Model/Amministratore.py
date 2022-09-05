@@ -14,7 +14,6 @@ from CodicePython.Model.Volontario import Volontario
 
 
 class Amministratore(Utente):
-    conta_tessere = 1
 
     def __init__(self, cellulare, codice_fiscale, cognome,
                  data_nascita, email, nome, password):
@@ -23,6 +22,7 @@ class Amministratore(Utente):
         self.elenco_donatori = []
         self.elenco_volontari = []
         self.elenco_dipendenti = []
+        self.conta_tessere = 1
 
     def iscriviDonatore(self, nome, cognome, codice_fiscale, data_nascita, cellulare, email,
                             password, gruppo_sanguigno, idoneita=True):
@@ -57,15 +57,15 @@ class Amministratore(Utente):
             with open('Model/Donatori.pickle', 'wb') as f:
                 pickle.dump(donatori, f, pickle.HIGHEST_PROTOCOL)
 
-    def crea_tessera(self, conta_tessere, nome, cognome):
-        tessera = Tessera(conta_tessere, nome, cognome, donazioni=[], numero_donazioni=0)
+    def crea_tessera(self, nome, cognome):
+        tessera = Tessera(self.conta_tessere, nome, cognome, donazioni=[], numero_donazioni=0)
         if os.path.isfile('Model/Tessere.pickle'):
             with open('Model/Tessere.pickle', 'rb') as f:  # lettura
                 tessere = pickle.load(f)
         tessere.append(tessera)
         with open('Model/Tessere.pickle', 'wb') as f:
             pickle.dump(tessere, f, pickle.HIGHEST_PROTOCOL)
-        conta_tessere += 1
+        self.conta_tessere += 1
 
     def ricercaTessera(self, numero):
         if os.path.isfile('Model/Tessere.pickle'):
