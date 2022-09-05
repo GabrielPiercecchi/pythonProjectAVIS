@@ -3,8 +3,9 @@ from CodicePython.View.VistaTessera import VistaTessera
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QLabel, QSpacerItem, QSizePolicy, QPushButton
 from CodicePython.Model.Amministratore import Amministratore
 
+
 class VistaVisualizzaDonatore(QWidget):
-    def __init__(self, donatore, elimina_callback): #gestione visualizza ed elimina donatore
+    def __init__(self, donatore, elimina_callback):  # gestione visualizza ed elimina donatore
         super(VistaVisualizzaDonatore, self).__init__()
         self.elimina_callback = elimina_callback
 
@@ -57,4 +58,3 @@ class VistaVisualizzaDonatore(QWidget):
         except IndexError:
             print("INDEX ERROR")
             return
-

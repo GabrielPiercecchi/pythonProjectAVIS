@@ -30,24 +30,23 @@ class VistaInserisciDonatore(QWidget):
         self.setLayout(self.v_layout)
         self.setWindowTitle("Nuovo donatore")
 
-
     def add_info_text(self, nome, label):
         self.v_layout.addWidget(QLabel(label))
         current_text = QLineEdit(self)
         self.qLines[nome] = current_text
         self.v_layout.addWidget(current_text)
 
-    def aggiungi_donatore(self):  #problema Amministratore !!!!!
+    def aggiungi_donatore(self):  # problema Amministratore !!!!!
         # se serve, aggiungere un try catch. In questo caso no poiche il CF può essere una stringa
         for value in self.qLines.values():
             if isinstance(value, QLineEdit):
                 if value.text() == "":
                     QMessageBox.critical(self, 'Errore', 'Inserire tutte le informazioni richieste',
-                                          QMessageBox.Ok, QMessageBox.Ok)
+                                         QMessageBox.Ok, QMessageBox.Ok)
                     return
         amministratore = Amministratore(376, "AMMINISTRATORESTUPIDO", "Paniccia",
-                 2000-12-25, "osvaldopaniccia@boh.sium", "Osvaldo", "password")
-        try:  #DA CONTROLLARE
+                                        2000 - 12 - 25, "osvaldopaniccia@boh.sium", "Osvaldo", "password")
+        try:  # DA CONTROLLARE
             nome = self.qLines["nome"].text()
             print(nome)
             cognome = self.qLines["cognome"].text()
@@ -67,12 +66,12 @@ class VistaInserisciDonatore(QWidget):
             password = self.qLines["password"].text()
             print(password)
             amministratore.iscriviDonatore(nome, cognome, codice_fiscale, data_nascita, cellulare, email,
-                                               password, gruppo_sanguigno, idoneita)
+                                           password, gruppo_sanguigno, idoneita)
             amministratore.crea_tessera(nome, cognome)
             # donatore = Donatore(cellulare, codice_fiscale, cognome, data_nascita,
             #     email, nome, password, numtessera, gruppo_sanguigno, idoneita)
         except:
             QMessageBox.critical(self, 'Errore', 'Controlla i dati inseriti', QMessageBox.Ok, QMessageBox.Ok)
             return
-   #     self.callback()
+        #     self.callback()
         self.close()

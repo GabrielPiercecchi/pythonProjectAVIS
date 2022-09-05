@@ -22,7 +22,9 @@ class Amministratore(Utente):
         self.elenco_donatori = []
         self.elenco_volontari = []
         self.elenco_dipendenti = []
-        self.conta_tessere = 1
+        self.tessere = []
+
+    conta_tessere = 1
 
     def iscriviDonatore(self, nome, cognome, codice_fiscale, data_nascita, cellulare, email,
                             password, gruppo_sanguigno, idoneita=True):
@@ -59,21 +61,26 @@ class Amministratore(Utente):
 
     def crea_tessera(self, nome, cognome):
         print("passo1")
-        tessera = Tessera(self.conta_tessere, nome, cognome, donazioni=[], numero_donazioni=0)
+        print(Amministratore.conta_tessere)
+        tessera = Tessera(Amministratore.conta_tessere, nome, cognome, donazioni=[], numero_donazioni=0)
+        print("passo2")
         if os.path.isfile('Model/Tessere.pickle'):
-            print("passo2")
+            print("passo3")
             with open('Model/Tessere.pickle', 'rb') as f:  # lettura
-                tessere = pickle.load(f)
-        tessere.append(tessera)
+                self.tessere = pickle.load(f)
+        self.tessere.append(tessera)
         with open('Model/Tessere.pickle', 'wb') as f:
-            pickle.dump(tessere, f, pickle.HIGHEST_PROTOCOL)
-        self.conta_tessere += 1
+            pickle.dump(self.tessere, f, pickle.HIGHEST_PROTOCOL)
+        print("passo4")
+        Amministratore.conta_tessere += 1
+        print("passo5")
+        print(Amministratore.conta_tessere)
 
     def ricercaTessera(self, numero):
         if os.path.isfile('Model/Tessere.pickle'):
             with open('Model/Tessere.pickle', 'rb') as f:
-                tessere = dict(pickle.load(f))
-                for tessera in tessere.values():
+                tessere = list(pickle.load(f))
+                for tessera in tessere:
                     if tessera.codice == numero:
                         return tessera
                 return None

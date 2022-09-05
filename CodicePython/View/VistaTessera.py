@@ -1,4 +1,5 @@
 from CodicePython.Model.Tessera import Tessera
+from CodicePython.Model.Amministratore import Amministratore
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QLabel, QSpacerItem, QSizePolicy
 
 
@@ -16,7 +17,11 @@ class VistaTessera(QWidget):  #DA CORREGGERE
 
         v_layout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
 
-        tessera = Tessera(donatore.numtessera, donatore.nome, donatore.cognome, donazioni=None, numero_donazioni=0)
+        #Temporaneo?
+        # tessera = Tessera(donatore.numtessera, donatore.nome, donatore.cognome, donazioni=None, numero_donazioni=0)
+        amministratore = Amministratore(376, "AMMINISTRATORESTUPIDO", "Paniccia",
+                                        2000 - 12 - 25, "osvaldopaniccia@boh.sium", "Osvaldo", "password")
+        tessera = amministratore.ricercaTessera(donatore.numtessera)
 
         v_layout.addWidget(QLabel(f"Nome: {tessera.nome_donatore}"))
         v_layout.addWidget(QLabel(f"Cognome: {tessera.cognome_donatore}"))
