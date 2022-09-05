@@ -58,8 +58,10 @@ class Amministratore(Utente):
                 pickle.dump(donatori, f, pickle.HIGHEST_PROTOCOL)
 
     def crea_tessera(self, nome, cognome):
+        print("passo1")
         tessera = Tessera(self.conta_tessere, nome, cognome, donazioni=[], numero_donazioni=0)
         if os.path.isfile('Model/Tessere.pickle'):
+            print("passo2")
             with open('Model/Tessere.pickle', 'rb') as f:  # lettura
                 tessere = pickle.load(f)
         tessere.append(tessera)
