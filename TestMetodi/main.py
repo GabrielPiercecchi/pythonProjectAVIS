@@ -25,6 +25,7 @@ if __name__ == '__main__':
             password = sample_user[1]
             users_file.write(username + ';' + password + '\n')
 
+
     """"with open('./users.txt', 'w') as f:
         pickler = pickle.Pickler(f)
         for sample_user in sample_users:
@@ -96,6 +97,6 @@ def loginFunction2():
                 break
 
 
-if __name__ == "__main__":
-    loginFunction()
+"""""if __name__ == "__main__":
+    loginFunction()"""""
 
