@@ -27,7 +27,7 @@ class Amministratore(Utente):
     conta_tessere = 1
 
     def iscriviDonatore(self, nome, cognome, codice_fiscale, data_nascita, cellulare, email,
-                            password, gruppo_sanguigno, idoneita=True):
+                        password, gruppo_sanguigno, idoneita=True):
         donatore = Donatore(cellulare, codice_fiscale, cognome, data_nascita, email, nome, password,
                             self.conta_tessere, gruppo_sanguigno, True)
 
@@ -104,7 +104,21 @@ class Amministratore(Utente):
         return orario
 
     def modificaStatoDonazione(self, anno, mese, giorno, ora, minuto,
-                                   donatore):  # DA FARE!!!
+                               donatore):  # DA FARE!!!
+        # METODO CHE TRASFORMA UN TXT IN PICKLE
+        """
+        # Read as bytes
+        with open('data.txt', 'rb') as f:
+            data =  f.read()
+
+        # Save as pickle
+        with open('data.pkl', 'wb') as f:
+            pickle.dump(data, f)
+
+        # Load as pickle
+        with open('data.pkl', 'rb') as f:
+           data_pickle = pickle.load(f)
+        """
         donazioni = []
         with open('../orari.txt', 'r') as fp:
             for line in fp:
