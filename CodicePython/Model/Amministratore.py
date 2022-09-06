@@ -105,6 +105,8 @@ class Amministratore(Utente):
 
     def modificaStatoDonazione(self, anno, mese, giorno, ora, minuto,
                                donatore):  # DA FARE!!!
+
+        # Trovato anche nuovo metodo aggiunto come progetto di python aggiuntivo!!!
         # METODO CHE TRASFORMA UN TXT IN PICKLE
         """
         # Read as bytes
