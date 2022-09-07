@@ -1,15 +1,18 @@
 import pickle
+from typing import Type
+
 from CodicePython import Model
 
 
 class GestioneFinanze:
-    with open('../Model/Rapportino.pickle', 'rb') as f:
-        rapportini = list(pickle.load(f))
-        for rapportino in rapportini:
-            pass
+    KPrezzo = 1.80
 
+    @staticmethod
+    def calcolaSpese():
+        Tot = 0
+        with open('../CodicePython/Model/Rapportino.pickle', 'rb') as f:
+            rapportini = list(pickle.load(f))
+            for rapportino in rapportini:
+                Tot += (float(rapportino.KM_fine) - float(rapportino.KM_inizio)) * GestioneFinanze.KPrezzo
+        return float(Tot)
 
-if __name__ == '__main__':
-    with open('../Model/Rapportino.pickle', 'rb') as f:
-        rapportini = pickle.load(f)
-        print(rapportini)
