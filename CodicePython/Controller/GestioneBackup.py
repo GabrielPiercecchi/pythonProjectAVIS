@@ -1,18 +1,17 @@
 # Import the following modules
 import shutil
 from datetime import date
-import os
-import sys
+
 
 # When there is need, just change the directory
-os.chdir(sys.path[0])
+# os.chdir(sys.path[0])
 
 
 # Function for performing the
 # backup of the files and folders
 def take_backup(src_file_name,
                 dst_file_name=None,
-                src_dir='',
+                src_dir='/home/gabriel/PycharmProjects/pythonProjectAVIS/CodicePython/Model/',
                 dst_dir=''):
     global date_format
     try:
@@ -24,6 +23,7 @@ def take_backup(src_file_name,
         # Make the source directory,
         # where we wanna backup our files
         src_dir = src_dir + src_file_name
+        print(src_dir)
 
         # If user not enter any source file,
         # then just give the error message...
@@ -75,8 +75,10 @@ def take_backup(src_file_name,
 
 # Call the function
 # take_backup("ciao.txt")
-
 if __name__ == '__main__':
-    take_backup("personale.txt")
-    take_backup("donatori.txt")
-    take_backup("test.json")
+    take_backup('Orari.txt')
+    take_backup('Dipendenti.pickle')
+    take_backup('Donatori.pickle')
+    take_backup('Orario.pickle')
+    take_backup('Rapportino.pickle')
+    take_backup('Volontari.pickle')
