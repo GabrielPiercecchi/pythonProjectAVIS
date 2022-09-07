@@ -5,6 +5,8 @@ from CodicePython.View.VistaDonatori import VistaDonatori
 from CodicePython.View.VistaPersonale import VistaPersonale
 from PyQt5.QtWidgets import QWidget, QGridLayout, QPushButton, QSizePolicy
 
+from CodicePython.Controller.GestioneBackup import callAll
+
 
 class VistaHome(QWidget):
 
@@ -38,4 +40,4 @@ class VistaHome(QWidget):
         self.vista_personale.show()
 
     def go_sistema(self):
-        pass
+        callAll()

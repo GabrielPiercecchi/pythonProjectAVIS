@@ -1,7 +1,7 @@
 import sys
 
 from PyQt5.QtWidgets import QApplication
-from View.VistaHome import VistaHome
+from CodicePython.View.VistaHome import VistaHome
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

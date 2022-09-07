@@ -12,7 +12,7 @@ from datetime import date
 def take_backup(src_file_name,
                 dst_file_name=None,
                 src_dir='/home/gabriel/PycharmProjects/pythonProjectAVIS/CodicePython/Model/',
-                dst_dir=''):
+                dst_dir='/home/gabriel/PycharmProjects/pythonProjectAVIS/CodicePython/Controller/BackupPackage/'):
     global date_format
     try:
 
@@ -75,7 +75,7 @@ def take_backup(src_file_name,
 
 # Call the function
 # take_backup("ciao.txt")
-if __name__ == '__main__':
+def callAll():
     take_backup('Orari.txt')
     take_backup('Dipendenti.pickle')
     take_backup('Donatori.pickle')

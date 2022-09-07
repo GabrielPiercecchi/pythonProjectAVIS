@@ -1,2 +1,8 @@
+import pickle
+
+
 class GestioneFinanze:
-    pass
+    with open('Model/Rapportino.pickle', 'rb') as f:
+        rapportini = list(pickle.load(f))
+        for rapportino in rapportini:
+            pass
