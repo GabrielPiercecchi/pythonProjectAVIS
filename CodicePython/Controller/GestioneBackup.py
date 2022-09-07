@@ -11,8 +11,8 @@ from datetime import date
 # backup of the files and folders
 def take_backup(src_file_name,
                 dst_file_name=None,
-                src_dir='/home/gabriel/PycharmProjects/pythonProjectAVIS/CodicePython/Model/',
-                dst_dir='/home/gabriel/PycharmProjects/pythonProjectAVIS/CodicePython/Controller/BackupPackage/'):
+                src_dir='../CodicePython/Model/',
+                dst_dir='../CodicePython/Controller/BackupPackage/'):
     global date_format
     try:
 
