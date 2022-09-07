@@ -1,8 +1,0 @@
-2022 08 19 10 15 L 0
-2022 08 19 10 30 O 34
-
-anno mese giorno ora minuto stato tesseradonatore
-
-Secondo modo possibile di visualizzazione:
-
-2022/09/21 10:00 L 32

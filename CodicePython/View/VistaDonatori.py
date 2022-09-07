@@ -12,6 +12,7 @@ from CodicePython.View.VistaInserisciDonatore import VistaInserisciDonatore
 
 class VistaDonatori(QWidget):
     def __init__(self, parent=None):
+        self.donatori = []
         self.windowTemp = QWidget
         super(VistaDonatori, self).__init__(parent)
         h_layout = QHBoxLayout()
@@ -41,7 +42,6 @@ class VistaDonatori(QWidget):
                 self.donatori.extend(current)
 
     def update_donatori(self):
-        self.donatori = []
         self.load_donatori()
         listview_model = QStandardItemModel(self.list_view)  #definisce come è fatta una riga
         for donatore in self.donatori:

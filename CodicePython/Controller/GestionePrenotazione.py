@@ -47,12 +47,12 @@ DEVE ESSERE IMPLEMENTATO IL METODO "__modificaPrenotazione__"
 """
 
 """
-Metodo "__visualizzaDisponibilità__" (alternativo che stampa solo il file orari.txt)
+Metodo "__visualizzaDisponibilità__" (alternativo che stampa solo il file Orari.txt)
 --> Per questo motivo bisognerà creare un metodo che permetta di salvare una data
     e fare in modo che non possa essere scelta ancora.
 
     def __visualizzaDisponibilita__(self):
-            with open('orari.txt') as f:
+            with open('Orari.txt') as f:
                 lines = f.read()
                 print(lines)
 

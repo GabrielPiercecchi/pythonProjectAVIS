@@ -25,7 +25,6 @@ if __name__ == '__main__':
             password = sample_user[1]
             users_file.write(username + ';' + password + '\n')
 
-
     """"with open('./users.txt', 'w') as f:
         pickler = pickle.Pickler(f)
         for sample_user in sample_users:
@@ -44,10 +43,10 @@ def loginFunction():
             # Read line by line instead of loading the whole file into memory
             # In this case, it won't matter, but it's a good practice to avoid
             # running out of memory if you have reaaaally large files
-            line_without_newline = line.rstrip('\n')  # Remove ending \n
-            user_record = line_without_newline.split(';')  # Separate into username
+            line_without_newline = line.rstrip('\n')  # Remove ending \n DA PRENDERE
+            user_record = line_without_newline.split(';')  # Separate into username FORSE
             # and password (make the line a list again)
-            userName = user_record[0]
+            userName = user_record[0]  # DA PRENDERE
             password = user_record[1]
             # Might as well do userName, password = line_without_newline.split(';')
             if userName == userEntry:
@@ -99,4 +98,3 @@ def loginFunction2():
 
 """""if __name__ == "__main__":
     loginFunction()"""""
-

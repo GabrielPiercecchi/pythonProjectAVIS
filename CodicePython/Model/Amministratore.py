@@ -1,5 +1,6 @@
 import os.path
 import pickle
+import datetime
 
 from CodicePython.Model.Utente import Utente
 import fileinput
@@ -8,8 +9,6 @@ from CodicePython.Model.Dipendente import Dipendente
 from CodicePython.Model.Donazione import Donazione
 from CodicePython.Model.Tessera import Tessera
 from CodicePython.Model.Donatore import Donatore
-import datetime
-
 from CodicePython.Model.Volontario import Volontario
 
 
@@ -96,12 +95,26 @@ class Amministratore(Utente):
                         tessere.pop(tessera)
                 pickle.dump(tessere, f, pickle.HIGHEST_PROTOCOL)
 
-    def visualizzaDisponibilita(self):
+    @staticmethod
+    def visualizzaDisponibilita():
+        formatDate = '%Y/%m/%d %H:%M:%S'
+        record = ""
         orario = []
-        with open('../orari.txt', 'r') as fp:
-            for line in fp:
-                orario.append(line)
-        return orario
+
+        ''''with open('Orari.txt') as f:            
+        lines = [line.rstrip() for line in f]'''''
+
+        timeFile = open('Model/Orari.txt', 'r')
+        print('passo1')
+        for line in timeFile:
+            line_without_newline = line.rstrip()
+            record = line_without_newline
+            userTime = datetime.datetime.strptime(record, formatDate)
+            orario.append(userTime)
+        print(orario)
+        print('passo2')
+        with open('Model/Orario.pickle', 'wb') as f:
+            pickle.dump(orario, f)
 
     def modificaStatoDonazione(self, anno, mese, giorno, ora, minuto,
                                donatore):  # DA FARE!!!

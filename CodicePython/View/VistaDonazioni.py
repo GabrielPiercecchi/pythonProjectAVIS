@@ -1,6 +1,6 @@
 import os
 import pickle
-
+from CodicePython.Model.Amministratore import Amministratore
 from CodicePython.View.VistaVisualizzaDonazione import VistaVisualizzaDonazione
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
 
@@ -10,6 +10,8 @@ from PyQt5.QtWidgets import QWidget, QHBoxLayout, QListView, QVBoxLayout, QPushB
 
 class VistaDonazioni(QWidget):
     def __init__(self, parent=None):
+        self.vista_donazione = None
+        self.donazioni = []
         self.windowTemp = QWidget
         super(VistaDonazioni, self).__init__(parent)
         h_layout = QHBoxLayout()
@@ -30,18 +32,29 @@ class VistaDonazioni(QWidget):
         self.setWindowTitle("Donazioni")
 
     def load_donazioni(self):  # RICONTROLLO
-            if os.path.isfile('Model/Donazioni.pickle'):
-                with open('Model/Donazioni.pickle', 'rb') as f:
-                    current = list(pickle.load(f))
-                    self.donazioni.extend(current)
+        print('passo3')
+        Amministratore.visualizzaDisponibilita()
+        if os.path.isfile('Model/Orario.pickle'):
+            with open('Model/Orario.pickle', 'rb') as f:
+                current = list(pickle.load(f))
+                self.donazioni.extend(current)
+            print(self.donazioni)
+        else:
+            print('\nFile not found')
+        print('passo4')
 
     def update_donazioni(self):
-        self.donazioni = []
+        print('passo5')
         self.load_donazioni()
-        listview_model = QStandardItemModel(self.list_view)  # definisce come è fatta una riga
+        print('passo6')
+        listview_model = QStandardItemModel(self.list_view)
+        # definisce come è fatta una riga
+        count = 0
         for donazione in self.donazioni:
+            count += 1
             item = QStandardItem()
-            nome = f"{donazione.day} / {donazione.month} / {donazione.year} ' ' {donazione.hour} : {donazione.minute} - {donazione.id_donazione}"
+            nome = f"{count})  {donazione.day}/{donazione.month}/{donazione.year}  {donazione.hour}:{donazione.minute}"
+            # - {donazione.id_donazione}"
             item.setText(nome)
             item.setEditable(False)
             font = item.font()
@@ -49,6 +62,7 @@ class VistaDonazioni(QWidget):
             item.setFont(font)
             listview_model.appendRow(item)
         self.list_view.setModel(listview_model)
+        print('passo7')
 
     def show_selected_info(self):
         amministratore = Amministratore(376, "AMMINISTRATORESTUPIDO", "Paniccia",
