@@ -36,8 +36,8 @@ class VistaDonatori(QWidget):
         self.setWindowTitle("Donatori")
 
     def load_donatori(self):  #RICONTROLLO
-        if os.path.isfile('Model/Donatori.pickle'):
-            with open('Model/Donatori.pickle', 'rb') as f:
+        if os.path.isfile('../Model/Donatori.pickle'):
+            with open('../Model/Donatori.pickle', 'rb') as f:
                 current = list(pickle.load(f))
                 self.donatori.extend(current)
 

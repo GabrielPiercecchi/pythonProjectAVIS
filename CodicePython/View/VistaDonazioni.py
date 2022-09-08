@@ -34,8 +34,8 @@ class VistaDonazioni(QWidget):
     def load_donazioni(self):  # RICONTROLLO
         print('passo3')
         Amministratore.visualizzaDisponibilita()
-        if os.path.isfile('Model/Orario.pickle'):
-            with open('Model/Orario.pickle', 'rb') as f:
+        if os.path.isfile('../Model/Orario.pickle'):
+            with open('../Model/Orario.pickle', 'rb') as f:
                 current = list(pickle.load(f))
                 self.donazioni.extend(current)
             print(self.donazioni)

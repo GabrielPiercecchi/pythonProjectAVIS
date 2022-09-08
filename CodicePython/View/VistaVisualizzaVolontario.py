@@ -3,8 +3,9 @@ from PyQt5.QtWidgets import QWidget, QVBoxLayout, QLabel, QSpacerItem, QSizePoli
 
 from CodicePython.Model.Amministratore import Amministratore
 
+
 class VistaVisualizzaVolontario(QWidget):
-    def __init__(self, volontario, elimina_callback): #gestione visualizza ed elimina donatore
+    def __init__(self, volontario, elimina_callback):  # gestione visualizza ed elimina donatore
         super(VistaVisualizzaVolontario, self).__init__()
         self.elimina_callback = elimina_callback
 

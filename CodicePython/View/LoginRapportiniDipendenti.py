@@ -3,6 +3,7 @@ import pickle
 
 from CodicePython.View.VistaInserisciRapportini import VistaInserisciRapportini
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton, QLabel, QLineEdit, QMessageBox
+from CodicePython.Model import Amministratore
 
 
 class LoginRapportiniDipendenti(QWidget):
@@ -30,8 +31,8 @@ class LoginRapportiniDipendenti(QWidget):
         username = self.qLines["username"].text()
         password = self.qLines["password"].text()
         self.elenco_dipendenti = []
-        if os.path.isfile('Model/Dipendenti.pickle'):
-            with open('Model/Dipendenti.pickle', 'rb') as f:
+        if os.path.isfile('../Model/Dipendenti.pickle'):
+            with open('../Model/Dipendenti.pickle', 'rb') as f:
                 current = list(pickle.load(f))
                 self.elenco_dipendenti.extend(current)
         print(self.elenco_dipendenti)

@@ -1,6 +1,7 @@
 # Import the following modules
 import shutil
 from datetime import date
+from CodicePython import Model
 
 
 # When there is need, just change the directory
@@ -11,8 +12,8 @@ from datetime import date
 # backup of the files and folders
 def take_backup(src_file_name,
                 dst_file_name=None,
-                src_dir='../CodicePython/Model/',
-                dst_dir='../CodicePython/Controller/BackupPackage/'):
+                src_dir='/home/gabriel/PycharmProjects/pythonProjectAVIS/CodicePython/Model/',
+                dst_dir='/home/gabriel/PycharmProjects/pythonProjectAVIS/CodicePython/Controller/BackupPackage/'):
     global date_format
     try:
 

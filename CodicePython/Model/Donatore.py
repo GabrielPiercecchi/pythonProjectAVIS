@@ -3,6 +3,7 @@ import datetime
 from CodicePython.Model import Tessera
 from CodicePython.Model.Donazione import Donazione
 from CodicePython.Model.Utente import Utente
+from CodicePython.Controller import GestioneFinanze
 
 
 class Donatore(Utente):

@@ -41,8 +41,8 @@ class VistaDipendente(QWidget):
         self.setWindowTitle("Dipendenti")
 
     def load_dipendenti(self):
-        if os.path.isfile('Model/Dipendenti.pickle'):
-            with open('Model/Dipendenti.pickle', 'rb') as f:
+        if os.path.isfile('../Model/Dipendenti.pickle'):
+            with open('../Model/Dipendenti.pickle', 'rb') as f:
                 current = list(pickle.load(f))
                 self.dipendenti.extend(current)
 

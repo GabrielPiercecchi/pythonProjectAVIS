@@ -29,11 +29,12 @@ class VistaRapportini(QWidget):
         self.setWindowTitle("Rapportini")
 
     def load_rapportini(self):
-        if os.path.isfile('Model/Rapportino.pickle'):
-            with open('Model/Rapportino.pickle', 'rb') as f:
+        if os.path.isfile('../Model/Rapportino.pickle'):
+            with open('../Model/Rapportino.pickle', 'rb') as f:
                 self.rapportini = list(pickle.load(f))
-       #         current = list(pickle.load(f))
-        #        self.rapportini.extend(current)
+
+    #         current = list(pickle.load(f))
+    #        self.rapportini.extend(current)
 
     def update_rapportini(self):
         self.rapportini = []
@@ -57,7 +58,7 @@ class VistaRapportini(QWidget):
         try:
             selected = self.list_view.selectedIndexes()[0].data()
             print(selected)
-            rapportino = amministratore.visualizzaRapportini(selected)  #non returna niente
+            rapportino = amministratore.visualizzaRapportini(selected)  # non returna niente
             print(rapportino)
             self.vista_rapportino = VistaVisualizzaRapportino(rapportino)
             self.vista_rapportino.show()

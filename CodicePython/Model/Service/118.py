@@ -2,7 +2,7 @@ from CodicePython.Model.Rapportino import Rapportino
 from CodicePython.Model.Service.Emergenza import Emergenza
 
 
-class 118(Emergenza):
+class ___118(Emergenza):
 
     def __init__(self, spesa: int, stato: bool, tipo: ""):
         Emergenza.__init__(self, spesa, stato, tipo)

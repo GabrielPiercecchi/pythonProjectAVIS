@@ -42,7 +42,7 @@ class VistaInserisciRapportini(QWidget):
             print(km_inizio)
             km_fine = self.qLines["km fine"].text()
             print(km_fine)
-            personale = Personale(1,1,1,1,1,1,1,1,1)  #valori di default
+            personale = Personale(1, 1, 1, 1, 1, 1, 1, 1, 1)  # valori di default
             personale.inserisciRapportino(data, km_inizio, km_fine)
         except Exception as e:
             print(e)

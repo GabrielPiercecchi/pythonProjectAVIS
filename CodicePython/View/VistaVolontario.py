@@ -41,8 +41,8 @@ class VistaVolontario(QWidget):
         self.setWindowTitle("Volontari")
 
     def load_volontari(self):
-        if os.path.isfile('Model/Volontari.pickle'):
-            with open('Model/Volontari.pickle', 'rb') as f:
+        if os.path.isfile('../Model/Volontari.pickle'):
+            with open('../Model/Volontari.pickle', 'rb') as f:
                 current = list(pickle.load(f))
                 self.volontari.extend(current)
 

@@ -1,5 +1,5 @@
 from CodicePython.View.VistaAmministratore import VistaAmministratore
-from PyQt5.QtWidgets import QVBoxLayout, QPushButton, QLabel, QLineEdit, QWidget
+from PyQt5.QtWidgets import QVBoxLayout, QPushButton, QLabel, QLineEdit, QWidget, QMessageBox
 
 
 class LoginAmministratore(QWidget):
