@@ -1,4 +1,4 @@
-#n Progetto ingegneria del Software
+# Progetto ingegneria del Software
 
 Autori: Naja Omar, Piercecchi Gabriel, Rossi Alan, Staffolani Federico
 
