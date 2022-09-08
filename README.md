@@ -1,5 +1,4 @@
-# pythonProject
-## Progetto ingegneria del Software
+#n Progetto ingegneria del Software
 
 Autori: Naja Omar, Piercecchi Gabriel, Rossi Alan, Staffolani Federico
 
