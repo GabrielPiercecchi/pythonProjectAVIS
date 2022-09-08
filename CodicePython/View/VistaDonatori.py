@@ -63,7 +63,7 @@ class VistaDonatori(QWidget):
             selected = selected.split("-")[1].strip()
             print(selected)
             donatore = amministratore.ricercaDonatore(selected)
-            print (donatore.nome)
+            print(donatore.nome)
             self.vista_donatore = VistaVisualizzaDonatore(donatore, elimina_callback=self.update_donatori)
             self.vista_donatore.show()
         except IndexError:

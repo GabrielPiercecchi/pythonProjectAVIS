@@ -16,6 +16,7 @@ class VistaPagamenti(QWidget):
     def __init__(self, parent=None):
         self.vista_pagamento = None
         self.donatori = []
+
         self.windowTemp = QWidget
         super(VistaPagamenti, self).__init__(parent)
         h_layout = QHBoxLayout()

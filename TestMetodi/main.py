@@ -1,5 +1,17 @@
-# This is a sample Python script.
+import datetime
+import os.path
 import pickle
+import random
+
+from CodicePython.Model.Amministratore import Amministratore
+from CodicePython.Controller.GestioneFinanze import GestioneFinanze
+from CodicePython.View.LoginNuovoDonatore import LoginNuovoDonatore
+from CodicePython.View.VistaVisualizzaDonatore import VistaVisualizzaDonatore
+from CodicePython.View.VistaVisualizzaPagamento import VistaVisualizzaPagamento
+from PyQt5.QtGui import QStandardItemModel, QStandardItem
+from PyQt5.QtWidgets import QVBoxLayout, QLabel, QSpacerItem, QSizePolicy, QHBoxLayout, QListView, \
+    QWidget, QPushButton
+from CodicePython.Model import Amministratore
 
 
 # Press Maiusc+F10 to execute it or replace it with your code.
@@ -96,5 +108,21 @@ def loginFunction2():
                 break
 
 
-"""""if __name__ == "__main__":
-    loginFunction()"""""
+if __name__ == "__main__":
+    elenco_volontari = []
+    elenco_dipendenti = []
+    elenco_personale_idoneo = []
+
+    with open('/home/gabriel/PycharmProjects/pythonProjectAVIS/CodicePython/Model/Volontari.pickle', 'rb') as f:  # lettura
+        elenco_volontari = pickle.load(f)
+    with open('/home/gabriel/PycharmProjects/pythonProjectAVIS/CodicePython/Model/Dipendenti.pickle.pickle', 'rb') as f:  # lettura
+        elenco_dipendenti = pickle.load(f)
+
+    print(elenco_dipendenti)
+    print(elenco_volontari)
+    elenco_personale_idoneo = elenco_dipendenti + elenco_volontari
+    if len(elenco_personale_idoneo) >= 1:
+        print(random.choices(elenco_personale_idoneo, k=1))
+    else:
+        print("Personale Insufficiente!!\n"
+              "Assumerne dei nuovi.")

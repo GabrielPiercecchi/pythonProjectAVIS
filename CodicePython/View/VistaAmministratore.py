@@ -1,6 +1,7 @@
 from CodicePython.View.VistaDonazioni import VistaDonazioni
 from CodicePython.View.VistaPagamenti import VistaPagamenti
 from CodicePython.View.VistaRapportini import VistaRapportini
+from CodicePython.View.VistaVisualizzaTurni import VistaVisualizzaTurni
 from PyQt5.QtWidgets import QWidget, QGridLayout, QSizePolicy, QPushButton
 
 
@@ -35,6 +36,8 @@ class VistaAmministratore(QWidget):
         self.vista_pagamenti.show()
 
     def go_turni(self):
-        pass
+        self.vista_turni = VistaVisualizzaTurni()
+        self.vista_turni.show()
+
 
 

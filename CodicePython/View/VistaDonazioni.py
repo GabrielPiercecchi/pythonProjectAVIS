@@ -65,14 +65,12 @@ class VistaDonazioni(QWidget):
         print('passo7')
 
     def show_selected_info(self):
-        amministratore = Amministratore(376, "AMMINISTRATORESTUPIDO", "Paniccia",
-                                        2000 - 12 - 25, "osvaldopaniccia@boh.sium", "Osvaldo", "password")
 
         try:
             selected = self.list_view.selectedIndexes()[0].data()
             selected = selected.split("-")[1].strip()
             print(selected)
-            donazione = amministratore.visualizzaDisponibilita(selected)
+            donazione = Amministratore.visualizzaDisponibilita(selected)
             self.vista_donazione = VistaVisualizzaDonazione(donazione, elimina_callback=self.update_donazioni)
             self.vista_donazione.show()
         except IndexError:

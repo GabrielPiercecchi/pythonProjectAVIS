@@ -32,9 +32,8 @@ class VistaVisualizzaDonazione(QWidget):
         self.setWindowTitle("Donazione")
 
     def modifica_donazione_click(self, donazione):
-        amministratore = Amministratore(376, "AMMINISTRATORESTUPIDO", "Paniccia",
-                                        2000 - 12 - 25, "osvaldopaniccia@boh.sium", "Osvaldo", "password")
+
         if isinstance(donazione, Donazione):
-            amministratore.modificaStatoDonazione()  #INSERIRE ATTRIBUTI CORRETTI
+            Amministratore.modificaStatoDonazione()  #INSERIRE ATTRIBUTI CORRETTI
         self.modifica_callback()
         self.close()
