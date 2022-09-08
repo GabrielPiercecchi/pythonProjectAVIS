@@ -39,7 +39,7 @@ class VistaVisualizzaDipendente(QWidget):
     def elimina_dipendente_click(self, dipendente):
         amministratore = Amministratore(376, "AMMINISTRATORESTUPIDO", "Paniccia",
                                         2000 - 12 - 25, "osvaldopaniccia@boh.sium", "Osvaldo", "password")
-        print("limina")
+        print("elimina")
         if isinstance(dipendente, Dipendente):
             amministratore.eliminaDipendente(dipendente.codice_fiscale)
         self.elimina_callback()
