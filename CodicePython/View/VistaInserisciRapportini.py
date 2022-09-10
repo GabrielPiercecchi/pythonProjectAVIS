@@ -20,7 +20,7 @@ class VistaInserisciRapportini(QWidget):
         self.v_layout.addWidget(btn_ok)
 
         self.setLayout(self.v_layout)
-        self.setWindowTitle("Nuovo volontario")
+        self.setWindowTitle("Nuovo rapportino")
 
     def add_info_text(self, nome, label):
         self.v_layout.addWidget(QLabel(label))
